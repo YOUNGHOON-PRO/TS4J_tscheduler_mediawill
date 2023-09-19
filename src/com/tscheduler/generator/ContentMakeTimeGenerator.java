@@ -21,6 +21,9 @@ public class ContentMakeTimeGenerator
 	/**상태를 업데이트하는 쿼리*/
 	private static final String DATE_UPDATE_QUERY_MSSQL = "UPDATE TS_MAILQUEUE SET SDATE=getDate() WHERE MID=?";
 
+	/**상태를 업데이트하는 쿼리*/
+	private static final String DATE_UPDATE_QUERY_MARIA = "UPDATE TS_MAILQUEUE SET SDATE=getDate() WHERE MID=?";
+
 	/**
 	 * 컨덴츠 생성 완료 시간을 DB에 update시킨다.
 	 * @version 1.0
@@ -49,6 +52,9 @@ public class ContentMakeTimeGenerator
 			}
 			else if( (dbType.toUpperCase()).equals("MSSQL") ) {
 				pstmt = con_work.prepareStatement(DATE_UPDATE_QUERY_MSSQL);
+			}
+			else if( (dbType.toUpperCase()).equals("MARIA") ) {
+				pstmt = con_work.prepareStatement(DATE_UPDATE_QUERY_MARIA);
 			}
 			else {	//디비타입을 정하지 않았습니다.
 				return false;

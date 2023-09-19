@@ -175,6 +175,37 @@ public class ReserveManager {
         		    .toString();
         }
       }
+    else if ( (dbType.toUpperCase()).equals("MARIA")) {
+        if (cfg.isMultiLang()) {
+          NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+              .append(" SELECT MID, SUBID, TID, TS_CHARSET.CHARSET, SPOS, SNAME, SMAIL, SID, RPOS,")
+              .append(" QUERY, CTNPOS, SUBJECT, CONTENTS, CDATE, ")
+              .append(" SDATE, STATUS, DBCODE, REFMID, ATTACHFILE01, ")
+              .append(" ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05 ")
+              .append("FROM TS_MAILQUEUE, TS_CHARSET ")
+              .append("WHERE STATUS = '").append(ReserveStatusCode.
+                                                 DEFAULT_RESERVE).append("' ")
+              .append(" AND CDATE < NOW()")
+              .append(" AND TS_MAILQUEUE.CHARSET = TS_CHARSET.CODE")
+              .append(" LIMIT ").append(resMaxSize)
+              .toString();
+        }
+        else {
+            NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+        		    .append("SELECT A.MID, A.SUBID, A.TID, A.SPOS, A.SNAME, A.SMAIL, A.SID, A.RPOS, ")
+        		    .append("A.QUERY, A.CTNPOS, A.SUBJECT, A.CONTENTS, A.CDATE, A.SDATE, A.STATUS, ")
+        		    .append("A.DBCODE, A.REFMID, A.ATTACHFILE01, A.ATTACHFILE02, A.ATTACHFILE03, A.ATTACHFILE04, A.ATTACHFILE05, A.REQUEST_KEY, ")
+        		    .append("B.SECU_ATT_YN ,B.SOURCE_URL, B.SECU_ATT_TYP, C.TITLE_CHK_YN, C.BODY_CHK_YN, C.ATTACH_FILE_CHK_YN, C.SECU_MAIL_CHK_YN ")
+        		    .append("FROM TS_MAILQUEUE A ")
+        		    .append("LEFT OUTER JOIN TS_WEBAGENT B ")
+        		    .append("ON A.TID = B.TID ")
+        		    .append("LEFT OUTER JOIN TS_SERVICETYP C ")
+        		    .append("ON A.TID = C.TID ")
+        		    .append("WHERE A.STATUS = '").append(ReserveStatusCode.DEFAULT_RESERVE).append("' ")
+        		    .append(" AND A.CDATE < NOW() LIMIT ").append(resMaxSize)
+        		    .toString();
+        }
+      }
   }
 
   /**

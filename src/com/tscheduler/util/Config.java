@@ -153,7 +153,7 @@ public class Config
 	}
 
 	/**
-	 * DB의 종류(Oracle, Mssql)
+	 * DB의 종류(Oracle, Mssql, MYSQL, MARIA)
 	 * @version 1.0
 	 * @author ymkim
 	 * @return String dbType

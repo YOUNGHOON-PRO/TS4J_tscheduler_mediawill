@@ -49,7 +49,15 @@ public class ResultLogManager
 			.append("INSERT INTO TS_RESULTLOG(MID, SUBID, TID, RID, RNAME, RMAIL, ")
 			.append("SID, SNAME, SMAIL, RCODE, STIME, REFMID ,WDATE) ")
 			.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE())")).toString();
+	
+	// TScheduler Generating 결과를 입력하는 Query(MSSQL 용)
+	private static String RESULT_LOG_QUERY_MARIA = (new StringBuffer()
+			.append("INSERT INTO TS_RESULTLOG(MID, SUBID, TID, RID, RNAME, RMAIL, ")
+			.append("SID, SNAME, SMAIL, RCODE, STIME, REFMID ,WDATE) ")
+			.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE())")).toString();
 
+	
+	
 	public ResultLogManager()
 	{
 //		vStatistics_MID = new Vector();
@@ -108,6 +116,9 @@ public class ResultLogManager
 			}
 			else if( dbType.toUpperCase().equals("MSSQL") ) {
 				pstmt = con_work.prepareStatement(RESULT_LOG_QUERY_MSSQL);
+			}
+			else if( dbType.toUpperCase().equals("MARIA") ) {
+				pstmt = con_work.prepareStatement(RESULT_LOG_QUERY_MARIA);
 			}
 			else {	//디비타입을 정하지 않았습니다.
 				return false;

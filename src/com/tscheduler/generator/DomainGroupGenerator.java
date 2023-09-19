@@ -44,6 +44,17 @@ public class DomainGroupGenerator
 			"				)									"+
 			"	)												";
 
+	/**도메인 리스트를 얻는 쿼리(MARIA용)*/
+	private static final String SELECT_MAILQUEUE_DOMAIN_QUERY_MARIA =
+			" SELECT DOMAINNAME FROM TS_DOMAIN_INFO				"+
+			"	WHERE DOMAINNAME NOT IN(						"+
+			"		SELECT DOMAINNAME FROM TS_MAILQUEUE_DOMAIN 	"+
+			"			WHERE SYY = (SUBSTRING(CONVERT(VARCHAR(4),DATEPART(YEAR,GETDATE())),3,2)) "+
+			"				AND SMM = (SUBSTRING(CONVERT(VARCHAR(10),GETDATE(),120),6,2))	"+
+			"				AND DOMAINNAME IN (					"+
+			"					SELECT DOMAINNAME FROM TS_DOMAIN_INFO	"+
+			"				)									"+
+			"	)												";
 
 	/**도메인 통계 테이블 입력 쿼리*/
 	private static final String INSERT_DOMAIN_QUERY = "INSERT INTO TS_MAILQUEUE_DOMAIN(DOMAINNAME) VALUES(?)";
@@ -135,6 +146,13 @@ public class DomainGroupGenerator
 
 			if( dbType.equalsIgnoreCase("ORACLE") ) {
 				pstmt = con_work.prepareStatement(SELECT_MAILQUEUE_DOMAIN_QUERY_ORA);
+			}
+			else if( dbType.equalsIgnoreCase("MSSQL") ) {
+				pstmt = con_work.prepareStatement(SELECT_MAILQUEUE_DOMAIN_QUERY_SQL);
+			}
+			
+			else if( dbType.equalsIgnoreCase("MARIA") ) {
+				pstmt = con_work.prepareStatement(SELECT_MAILQUEUE_DOMAIN_QUERY_MARIA);
 			}
 			else {
 				pstmt = con_work.prepareStatement(SELECT_MAILQUEUE_DOMAIN_QUERY_SQL);
