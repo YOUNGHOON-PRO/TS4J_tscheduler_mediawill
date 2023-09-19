@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<?xml-stylesheet type='text/xsl' href='../../SMTPLogging.xsl'?>
+<SMTPLOGINFO>
+	<MAILINFO>
+		<MSGID>4_1</MSGID>
+		<SUBID>1</SUBID>
+		<EMAIL>hun1110@hanmail.net</EMAIL>
+		<NAME>테스터3</NAME>
+		<USERID>QSKY3</USERID>
+		<LOGTIME>2021/06/28 16:41</LOGTIME>
+		<PROCEED>.</PROCEED>
+		<SMTPMSG>554 5.7.1 DAS41 14.32.51.225: Your mail is blocked automatically by anti-spam system. (E04)
+		</SMTPMSG>
+	</MAILINFO>
+</SMTPLOGINFO>

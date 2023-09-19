@@ -1,0 +1,212 @@
+
+################################################################
+��Ŭ�������� TScheduler ������ ���� config �� ���� ��� ���� ��η� ����
+################################################################
+
+1.	RecoveryReserveManager.java
+		
+	AS-IS(배포용)
+		File queuePathFile = new File(queuePath);
+	
+	TO-BE(이클립스용)
+		//File queuePathFile = new File(queuePath);
+		File queuePathFile = new File(".\\Queue_0\\Merge_Queue");
+		
+		
+		
+2. Config.java
+		
+	2-1	
+		AS-IS(배포용)
+			String mainCfgPath = "../config/TScheduler.conf";
+			
+		TO-BE(이클립스용)
+			//String mainCfgPath = "../config/TScheduler.conf";
+			String mainCfgPath = "./config/TScheduler.conf";
+			
+		
+	2-2		
+		AS-IS(배포용)
+			String dbCfgPath = "../config/database.conf";
+			
+		TO-BE(이클립스용)
+			//String dbCfgPath = "../config/database.conf";
+			String dbCfgPath = "./config/database.conf";			
+			
+
+3. ContentGenerator.java
+
+	3.1
+		AS-IS(배포용)
+			HtmlToPdf convert = new HtmlToPdf("../config/TScheduler.conf");
+		TO-BE(이클립스용)
+			HtmlToPdf convert = new HtmlToPdf("./config/TScheduler.conf");
+
+
+4. ReceiveManager.java
+
+		AS-IS (광주은행)
+			rMail = safeDbEnc.getDecrypt(rMail, "NOT_RNNO");
+			
+		TO-BE
+			//rMail = safeDbEnc.getDecrypt(rMail, "NOT_RNNO");
+       		rMail = enc.getJasyptDecryptedString(ALGORITHM, KEYSTRING, rMail);	
+		
+5. ReserveManager.java
+
+		AS-IS (광주은행)
+			sMail = safeDbEnc.getDecrypt(sMail, "NOT_RNNO");
+       		       	
+       	TO-BE 
+       		//sMail = safeDbEnc.getDecrypt(sMail, "NOT_RNNO");
+        	sMail = enc.getJasyptDecryptedString(ALGORITHM, KEYSTRING, sMail);
+			
+			
+6. config/TScheduler.conf
+
+		AS-IS(배포용)
+			QUEUE_FOLDER=../Queue
+						
+		TO-BE(이클립스용)
+			#QUEUE_FOLDER=../Queue
+			QUEUE_FOLDER=./Queue			
+			
+			
+################################################################
+�׽�Ʈ�߼� ����
+################################################################
+			
+			
+/*�Ϲݸ��� (URL) */
+insert into TS_RECIPIENTINFO ( mid, TID, RID, RNAME, RMAIL) 
+	values(257 ,1,'QSKY1','�迵��','hun1110@enders.co.kr');
+
+insert into TS_MAILQUEUE (mid, TID, SPOS, SID, SNAME, SMAIL, RPOS, CTNPOS,  SUBJECT, CONTENTS)	             
+	values(257,1,'0','hun1110','���','hun1110@enders.co.kr',	'0','0','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/name.jsp?name=1234&name2=32124&name3=test1234');
+	--values(64,0,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','https://www.enders.co.kr');
+
+
+/*÷�θ��� (URL) */
+insert into TS_RECIPIENTINFO ( mid, TID, RID, RNAME, RMAIL) 
+	values(261 ,1,'QSKY1','�迵��','hun1110@enders.co.kr');
+
+insert into TS_MAILQUEUE (mid, TID, SPOS, SID, SNAME, SMAIL, RPOS, CTNPOS,  SUBJECT, CONTENTS, ATTACHFILE01)	             
+	values(261,1,'0','hun1110','���','hun1110@enders.co.kr',	'0','0','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/name.jsp?name=1234&name2=32124&name3=test1234','c:/test.txt');
+	--values(64,0,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','https://www.enders.co.kr');
+
+SELECT * FROM TS_RECIPIENTINFO
+
+
+/*�Ϲݸ��� (URL) */
+insert into TS_RECIPIENTINFO ( mid, TID, RID, RNAME, RMAIL, ENCKEY) 
+	values(297 ,2,'QSKY1','�迵��','hun1010616@naver.com','123456');
+
+insert into TS_MAILQUEUE (mid, TID, SPOS, SID, SNAME, SMAIL, RPOS, CTNPOS,  SUBJECT, CONTENTS)	             
+--	values(279,1,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/name.jsp?name=�迵��&name2=32124&name3=test1234');
+	values(297,2,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/join.html');
+	
+
+
+
+/*���ȸ��� */
+insert into TS_RECIPIENTINFO ( mid, TID, RID, RNAME, RMAIL, ENCKEY) 
+	values(287 ,2,'QSKY1','�迵��','hun1010616@naver.com','123456');
+
+insert into TS_MAILQUEUE (mid, TID, SPOS, SID, SNAME, SMAIL, RPOS, CTNPOS,  SUBJECT, CONTENTS, ATTACHFILE01, ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05)	             
+--	values(279,1,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/name.jsp?name=�迵��&name2=32124&name3=test1234');
+	values(287,2,'0','hun1110','���','hun1110@enders.co.kr',	'0','1','%RNAME% ���� �׽�Ʈ �����Դϴ�.','http://localhost:8080/join.html','c:/test.txt','c:/test.txt','c:/test.txt','c:/test.txt','c:/test.txt');
+	
+
+INSERT INTO UMS.TS_WEBAGENT
+(TID, ATT_NO, SOURCE_URL, SECU_ATT_YN, UP_ID, UP_DT, REG_ID, REG_DT)
+VALUES(2, 2, 'http://localhost:8080/join.html', 'Y', 'ADMIN', '', 'ADMIN', '2021-09-02');
+
+
+
+
+
+
+
+20210712
+mysql 작업
+
+#############################
+database.conf 파일 옵션 추가
+#############################
+
+autoReconnect=true   <<  이부분 추가
+
+
+DRIVER=com.mysql.cj.jdbc.Driver
+URL=jdbc:mysql://localhost/UMS?autoReconnect=true
+USER=root
+PASSWARD=amway11!
+
+
+
+
+#############################
+예약리스트 가져오는 쿼리 수정
+#############################
+manager/ReserveManager.java
+
+
+		else if ( (dbType.toUpperCase()).equals("MYSQL")) {
+		        if (cfg.isMultiLang()) {
+		          NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+		              .append(" SELECT MID, SUBID, TID, TS_CHARSET.CHARSET, SPOS, SNAME, SMAIL, SID, RPOS,")
+		              .append(" QUERY, CTNPOS, SUBJECT, CONTENTS, CDATE, ")
+		              .append(" SDATE, STATUS, DBCODE, REFMID, ATTACHFILE01, ")
+		              .append(" ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05 ")
+		              .append("FROM TS_MAILQUEUE, TS_CHARSET ")
+		              .append("WHERE STATUS = '").append(ReserveStatusCode.
+		                                                 DEFAULT_RESERVE).append("' ")
+		              .append(" AND CDATE < NOW()")
+		              .append(" AND TS_MAILQUEUE.CHARSET = TS_CHARSET.CODE")
+		              .append(" LIMIT ").append(resMaxSize)
+		              .toString();
+		        }
+		        else {
+		          NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+		              .append(" SELECT MID, SUBID, TID, SPOS, SNAME, SMAIL, SID, RPOS,")
+		              .append(" QUERY, CTNPOS, SUBJECT, CONTENTS, CDATE, ")
+		              .append(" SDATE, STATUS, DBCODE, REFMID, ATTACHFILE01, ")
+		              .append(" ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05 ")
+		              .append("FROM TS_MAILQUEUE ")
+		              .append("WHERE STATUS = '").append(ReserveStatusCode.
+		                                                 DEFAULT_RESERVE).append("' ")
+		              .append(" AND CDATE < NOW()")
+		              .append(" LIMIT ").append(resMaxSize)
+		              .toString();
+		        }
+		      }
+
+#############################
+예약리스트 가져오는 쿼리 수정
+#############################
+autocommit 수정
+
+msssql, Oracle은 autocommit을 false로 하는데
+mysql은 autocommit을 ture로 로 설정하고 commit 호출 부분 주석처리 총 3군데 수정
+
+1. setAutoCommit true로 변경
+	WorkDBManager.java
+	
+		//con.setAutoCommit(false);
+		con.setAutoCommit(true);
+	
+2. 두군데 주석처리
+	ReserveManager.java	
+	
+		//con_work.commit();
+
+3. autocommit 부분 false에서 true로 변경
+	ResultLogManager.java	
+
+	try { con_work.setAutoCommit(true); } catch(Exception e) {}
+	
+	
+	
+	
+	
+			

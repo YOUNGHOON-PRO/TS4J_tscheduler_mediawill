@@ -1,0 +1,115 @@
+20210722
+
+
+
+#############################
+database.conf 파일 옵션 추가
+#############################
+
+jdbc.driver.name=oracle.jdbc.driver.OracleDriver
+jdbc.url=jdbc:oracle:thin:@127.0.0.1:1521:xe
+ums
+amway11!
+
+#############################
+예약리스트 가져오는 쿼리 수정 (mysql 추가)
+#############################
+manager/ReserveManager.java
+
+
+		else if ( (dbType.toUpperCase()).equals("MYSQL")) {
+		        if (cfg.isMultiLang()) {
+		          NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+		              .append(" SELECT MID, SUBID, TID, TS_CHARSET.CHARSET, SPOS, SNAME, SMAIL, SID, RPOS,")
+		              .append(" QUERY, CTNPOS, SUBJECT, CONTENTS, CDATE, ")
+		              .append(" SDATE, STATUS, DBCODE, REFMID, ATTACHFILE01, ")
+		              .append(" ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05 ")
+		              .append("FROM TS_MAILQUEUE, TS_CHARSET ")
+		              .append("WHERE STATUS = '").append(ReserveStatusCode.
+		                                                 DEFAULT_RESERVE).append("' ")
+		              .append(" AND CDATE < NOW()")
+		              .append(" AND TS_MAILQUEUE.CHARSET = TS_CHARSET.CODE")
+		              .append(" LIMIT ").append(resMaxSize)
+		              .toString();
+		        }
+		        else {
+		          NEXT_RESERVE_MAIL_QUERY = new StringBuffer()
+		              .append(" SELECT MID, SUBID, TID, SPOS, SNAME, SMAIL, SID, RPOS,")
+		              .append(" QUERY, CTNPOS, SUBJECT, CONTENTS, CDATE, ")
+		              .append(" SDATE, STATUS, DBCODE, REFMID, ATTACHFILE01, ")
+		              .append(" ATTACHFILE02, ATTACHFILE03, ATTACHFILE04, ATTACHFILE05 ")
+		              .append("FROM TS_MAILQUEUE ")
+		              .append("WHERE STATUS = '").append(ReserveStatusCode.
+		                                                 DEFAULT_RESERVE).append("' ")
+		              .append(" AND CDATE < NOW()")
+		              .append(" LIMIT ").append(resMaxSize)
+		              .toString();
+		        }
+		      }
+
+#############################
+예약리스트 가져오는 쿼리 수정
+#############################
+autocommit 수정
+
+msssql, Oracle은 autocommit을 false로 하는데
+mysql은 autocommit을 ture로 로 설정하고 commit 호출 부분 주석처리 총 3군데 수정
+
+1. setAutoCommit true로 변경
+	WorkDBManager.java
+	
+		con.setAutoCommit(false);
+		//con.setAutoCommit(true);
+	
+2. 두군데 주석처리 해제 (mysql 쓸때는 주석)
+	ReserveManager.java	
+	
+		//con_work.commit();  >> con_work.commit();
+
+3. autocommit 부분 true에서 false로 변경  (mysql 쓸때는 true로 변경)
+	ResultLogManager.java	
+
+	try { con_work.setAutoCommit(true); } catch(Exception e) {}    >>   try { con_work.setAutoCommit(false); } catch(Exception e) {}      
+	 
+		
+	
+	
+
+#############################
+머지 15개 추가
+#############################	
+
+MAP1 ~ MAP15
+
+	EmailGenerator.java (6 matches)
+	TransferFileToDataGenerator.java (5 matches)
+	ReceiveManager.java (14 matches)
+
+
+추가로 tscheduler.conf에도 MAP1~MAP15를 추가해주어야한다. (아래) 
+
+	#머지 리스트를 보여준다. 규칙은 구분자로 ``를 사용한다.
+	MERGY_LIST=RID``RNAME``RMAIL``HRNAME``MAP1``MAP2``MAP3``MAP4``MAP5``MAP6``MAP7``MAP8``MAP9``MAP10``MAP11``MAP12``MAP13``MAP14``MAP15 
+	
+	
+	
+	
+#############################
+파일 동기화 작업 개발
+#############################		
+config에 synctmp.properties 파일에 원격지 서버 정보와 파일을 복사해오는 임시폴더 설정등을 설정한다.
+아래 주석 부분 추가 개발 필요시 주석해제로 사용 ContentGenerator.java 여기에 총 4군데 있음
+
+	ContentGenerator.java
+	
+	
+		//##########################################################
+		// 파일 동기화 작업	
+		// content 경로의 파일을 원격지의 content와 동일여부 체크로 파일 동기화 
+		//##########################################################
+		//-----------------------------------------------------------
+//		File f = new File(content);
+//		SyncTemplete syncTemplete =  new SyncTemplete();
+//		syncTemplete.sync(f.getName());
+		//------------------------------------------------------------
+
