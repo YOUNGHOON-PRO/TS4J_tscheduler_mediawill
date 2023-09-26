@@ -66,6 +66,7 @@ public class Domain_List
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			return null;
 		}
 		finally
@@ -73,7 +74,7 @@ public class Domain_List
 			try {
 				WorkDBManager.releaseConnection(conn);
 			}
-			catch(Exception e) { }
+			catch(Exception e) { LOGGER.error(e);}
 
 			try {
 				if( stmt != null ) {
@@ -82,6 +83,7 @@ public class Domain_List
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 
 			try
@@ -92,6 +94,7 @@ public class Domain_List
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 	}

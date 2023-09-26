@@ -3,6 +3,8 @@ package com.tscheduler.dbbroker;
 //LegacyDB 연결 관리
 import java.sql.*;
 import com.tscheduler.util.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Legacy DB 관리 클래스
@@ -11,6 +13,9 @@ import com.tscheduler.util.*;
  */
 public class LegacyDBManager
 {
+	
+	private static final Logger LOGGER = LogManager.getLogger(LegacyDBManager.class.getName());
+	
 	/**LegacyDBManager의 Singleton 객체*/
 	private static LegacyDBManager instance;       // The single instance
 
@@ -57,7 +62,8 @@ public class LegacyDBManager
 			DebugTrace.println("컨넥션을 얻었습니다");
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 		return con;
 	}

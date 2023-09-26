@@ -7,6 +7,8 @@ import com.tscheduler.util.DataUnitInfo;
 import com.tscheduler.util.DataUnitInfoList;
 import com.tscheduler.util.EncryptUtil;
 import com.tscheduler.util.Config;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 수신자 리스트 파일을 DataUnitInfoList객체로 변환하는 클래스
@@ -14,7 +16,8 @@ import com.tscheduler.util.Config;
  * @author ymkim
  */
 public class TransferFileToDataGenerator
-{
+{ 
+	private static final Logger LOGGER = LogManager.getLogger(TransferFileToDataGenerator.class.getName());
 
 	/**
 	 * 파일을 받아들여서 그것을 DataUnitInfoList로 만들어준다.(다국어)
@@ -86,6 +89,7 @@ public class TransferFileToDataGenerator
 					}
 					catch(NoSuchElementException exp)
 					{
+						LOGGER.error(exp);
 						rUserList = null;
 						break;
 					}
@@ -126,7 +130,8 @@ public class TransferFileToDataGenerator
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			rUserList = null;
 		}
 		finally
@@ -139,6 +144,7 @@ public class TransferFileToDataGenerator
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return rUserList;
@@ -216,6 +222,7 @@ public class TransferFileToDataGenerator
                                         }
                                         catch(NoSuchElementException exp)
                                         {
+                                        	LOGGER.error(exp);
                                                 rUserList = null;
                                                 break;
                                         }
@@ -321,7 +328,8 @@ public class TransferFileToDataGenerator
                 }
                 catch(Exception e)
                 {
-                        e.printStackTrace();
+                	LOGGER.error(e);
+                        //e.printStackTrace();
                         rUserList = null;
                 }
                 finally
@@ -334,6 +342,7 @@ public class TransferFileToDataGenerator
                                 }
                         }
                         catch(Exception e) {
+                        	LOGGER.error(e);
                         }
                 }
                 return rUserList;

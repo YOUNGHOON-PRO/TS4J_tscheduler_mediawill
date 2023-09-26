@@ -284,7 +284,8 @@ public class HeaderGenerator implements Header
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 
 		return encodeStr;
@@ -330,7 +331,8 @@ public class HeaderGenerator implements Header
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 		return tran;
 	}

@@ -87,7 +87,8 @@ public class WorkDBManager
 			Class.forName(dbDriver);
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 
 		watingPool = new Vector(maxConn);
@@ -120,7 +121,8 @@ public class WorkDBManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 	}
 
@@ -157,7 +159,8 @@ public class WorkDBManager
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 		return con;
 	}
@@ -218,7 +221,8 @@ public class WorkDBManager
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 	}
 
@@ -260,7 +264,8 @@ public class WorkDBManager
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 
 		//다시 커넥션을 맺어준다.

@@ -6,6 +6,8 @@ import java.sql.*;
 import com.tscheduler.util.Config;
 import com.tscheduler.dbbroker.DBManager;
 import com.tscheduler.dbbroker.WorkDBManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -15,6 +17,8 @@ import com.tscheduler.dbbroker.WorkDBManager;
  */
 public class ContentMakeTimeGenerator
 {
+	private static final Logger LOGGER = LogManager.getLogger(ContentMakeTimeGenerator.class.getName());
+	
 	/**상태를 업데이트하는 쿼리*/
 	private static final String DATE_UPDATE_QUERY_ORA = "UPDATE TS_MAILQUEUE SET SDATE=sysdate WHERE MID=?";
 
@@ -68,8 +72,9 @@ public class ContentMakeTimeGenerator
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			return_value = false;
 		}
@@ -83,6 +88,7 @@ public class ContentMakeTimeGenerator
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return return_value;

@@ -555,7 +555,8 @@ public class EmailGenerator {
                                               ReserveStatusCode.CONTENTS_SUCCESS);
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //컨덴츠 생성 실패했을때는 실패에 대한 상태를 넣어준다.
         reserveInfo.setString("STATUS", ReserveStatusCode.CONTENTS_FAIL);
@@ -961,7 +962,8 @@ public class EmailGenerator {
         DebugTrace.println("작업 완료...");
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //컨덴츠 생성 실패했을때는 실패에 대한 상태를 넣어준다.
         reserveInfo.setString("STATUS", ReserveStatusCode.CONTENTS_FAIL);

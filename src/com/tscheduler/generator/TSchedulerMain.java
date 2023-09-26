@@ -95,7 +95,8 @@ public class TSchedulerMain extends Thread
 					resMana.setReserveMailList(null);
 				}
 				catch(Exception e) {
-					e.printStackTrace();
+					LOGGER.error(e);
+					//e.printStackTrace();
 				}
 			}
 			else {

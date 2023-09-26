@@ -15,6 +15,8 @@ import com.tscheduler.dbbroker.DBManager;
 import com.tscheduler.dbbroker.WorkDBManager;
 import com.tscheduler.util.ReserveStatusCode;
 import com.tscheduler.util.ErrorLogGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 예약 메일 관리 클래스(복구 모듈)
@@ -23,6 +25,8 @@ import com.tscheduler.util.ErrorLogGenerator;
  */
 public class RecoveryReserveManager
 {
+	private static final Logger LOGGER = LogManager.getLogger(RecoveryReserveManager.class.getName());
+	
 	public static String queueFolder = "";
 	public static int transferNum = 0;
 	public static int emlNumPerFolder = 0;
@@ -56,8 +60,8 @@ public class RecoveryReserveManager
 		{
 			String queuePath = new StringBuffer(queueFolder).append("_0")
 					.append(File.separator).append("Merge_Queue").append(File.separator).toString();
-			//File queuePathFile = new File(queuePath);
-			File queuePathFile = new File(".\\Queue_0\\Merge_Queue");
+			File queuePathFile = new File(queuePath);
+			//File queuePathFile = new File(".\\Queue_0\\Merge_Queue");
 			File[] midFolderFile = queuePathFile.listFiles();
 
 			for( int i = 0; i < midFolderFile.length; i++ )
@@ -122,7 +126,8 @@ public class RecoveryReserveManager
 			intSubNum = Integer.parseInt(tempSubNum);
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 
 		int preMakeEmlSize = emlNumPerFolder*(intSubNum-1);
@@ -216,7 +221,8 @@ public class RecoveryReserveManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			return false;
 		}
 		return true;
@@ -255,8 +261,9 @@ public class RecoveryReserveManager
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			//에러 로그를 남겨준다.
 			String errorInfo = mID;
@@ -274,6 +281,7 @@ public class RecoveryReserveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return return_value;

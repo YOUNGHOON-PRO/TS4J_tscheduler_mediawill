@@ -260,8 +260,9 @@ public class ResultLogManager
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			//에러 로그에 남겨준다.
 			ErrorLogGenerator.setErrorLogFormat("ResultLogManager", ReserveStatusCode.SQL_ERROR_TYPE,ReserveStatusCode.RESULT_LOG_INPUT_FAIL_COMMENT,mID);
@@ -271,12 +272,12 @@ public class ResultLogManager
 		finally
 		{
 			LOGGER.info(con_work);
-			try { if( pstmt != null ) { pstmt.close(); } } catch(Exception e) {}
-			try { if( pstmt_stat_MID != null ) { pstmt_stat_MID.close(); } } catch(Exception e) {}
-			try { if( pstmt_stat_DOMAIN != null ) { pstmt_stat_DOMAIN.close(); } } catch(Exception e) {}
+			try { if( pstmt != null ) { pstmt.close(); } } catch(Exception e) {LOGGER.error(e);}
+			try { if( pstmt_stat_MID != null ) { pstmt_stat_MID.close(); } } catch(Exception e) {LOGGER.error(e);}
+			try { if( pstmt_stat_DOMAIN != null ) { pstmt_stat_DOMAIN.close(); } } catch(Exception e) {LOGGER.error(e);}
 			//영맨 꽁수.. AutoCommit을 다시 원래대로 false로 바꿔준다.
-			try { con_work.setAutoCommit(true); } catch(Exception e) {}
-			try { WorkDBManager.releaseConnection(con_work); } catch(Exception e) {}
+			try { con_work.setAutoCommit(true); } catch(Exception e) {LOGGER.error(e);}
+			try { WorkDBManager.releaseConnection(con_work); } catch(Exception e) {LOGGER.error(e);}
 
 //				if( vStatistics_MID != null) vStatistics_MID.removeAllElements();
 //				if( vStatistics_DOMAIN != null) vStatistics_DOMAIN.removeAllElements();

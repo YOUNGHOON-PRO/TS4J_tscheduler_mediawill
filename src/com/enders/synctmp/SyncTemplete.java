@@ -11,9 +11,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SyncTemplete {
+	
+	private static final Logger LOGGER = LogManager.getLogger(SyncTemplete.class.getName());
 	
 	//파일트렌스퍼가 실행되는 곳의 템플릿 위치
 //	static String filetransfer_Path =  "addressfile/test02/";
@@ -55,6 +58,7 @@ public class SyncTemplete {
 			}
 			
 		} catch (IOException e) {
+			LOGGER.error(e);
 			e.printStackTrace();
 		}
 	}
@@ -93,15 +97,17 @@ public class SyncTemplete {
       		try {
       			reader = new BufferedReader(new FileReader(tempFile));
       		} catch (FileNotFoundException e1) {
+      			LOGGER.error(e1);
       			// TODO Auto-generated catch block
-      			e1.printStackTrace();
+      			//e1.printStackTrace();
       		}
               BufferedReader reader2 = null;
       		try {
       			reader2 = new BufferedReader(new FileReader(rootFile));
       		} catch (FileNotFoundException e1) {
+      			LOGGER.error(e1);
       			// TODO Auto-generated catch block
-      			e1.printStackTrace();
+      			//e1.printStackTrace();
       		}
 
               String data = null;
@@ -121,20 +127,23 @@ public class SyncTemplete {
       			    }
       			}
       		} catch (IOException e1) {
+      			LOGGER.error(e1);
       			// TODO Auto-generated catch block
-      			e1.printStackTrace();
+      			//e1.printStackTrace();
       		}
               try {
       			reader.close();
       		} catch (IOException e1) {
+      			LOGGER.error(e1);
       			// TODO Auto-generated catch block
-      			e1.printStackTrace();
+      			//e1.printStackTrace();
       		}
               try {
       			reader2.close();
       		} catch (IOException e1) {
+      			LOGGER.error(e1);
       			// TODO Auto-generated catch block
-      			e1.printStackTrace();
+      			//e1.printStackTrace();
       		}
         }
         
@@ -158,8 +167,9 @@ public class SyncTemplete {
             	try {
     				Files.delete(filePathToMove2);
     			} catch (IOException e) {
+    				LOGGER.error(e);
     				// TODO Auto-generated catch block
-    				e.printStackTrace();
+    				//e.printStackTrace();
     			}
         	}
         
@@ -183,8 +193,9 @@ public class SyncTemplete {
 					Files.copy(filePath, filePathToMove);
 					System.out.println("기존파일 백업 완료.");
 				} catch (IOException e) {
+					LOGGER.error(e);
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 		    }else { //파일 없으면
 		    	
@@ -204,8 +215,9 @@ public class SyncTemplete {
 					System.out.println("신규파일 업데이트 완료.");
 					rst = true;
 				} catch (IOException e) {
+					LOGGER.error(e);
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 		    }
 		    else { //파일 없으면
@@ -214,8 +226,9 @@ public class SyncTemplete {
 					System.out.println("신규파일 업데이트 완료.");
 					rst = true;
 				} catch (IOException e) {
+					LOGGER.error(e);
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 		    }
 		    

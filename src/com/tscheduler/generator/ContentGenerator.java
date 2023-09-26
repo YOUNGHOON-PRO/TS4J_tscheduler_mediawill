@@ -104,7 +104,8 @@ public class ContentGenerator {
         //tmpContent = new String(content.getBytes(charset));
         tmpContent = content;
       }catch(Exception e){
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
       }
       //내용이 html인지 아닌지 체크한다.
       isHtml = checkHtml(tmpContent, content, 1);
@@ -160,7 +161,8 @@ public class ContentGenerator {
       try{
         tmpContent = content;
       }catch(Exception e){
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
       }
       //내용이 html인지 아닌지 체크한다.
       isHtml = checkHtml(tmpContent, content, 1);
@@ -418,7 +420,8 @@ public class ContentGenerator {
         return tmpContent;
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
         return "";
       }
     }
@@ -428,7 +431,8 @@ public class ContentGenerator {
         return MimeUtility.encodeText(tmpContent, "ks_c_5601-1987", "Q");
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
         return "";
       }
     }
@@ -473,6 +477,7 @@ public class ContentGenerator {
       return_value = new String(sb.toString().getBytes(charset));
     }
     catch (Exception e) {
+    	LOGGER.error(e);
 //      e.printStackTrace();
       LogFileManager.runLogWriter("getLegacyDBInfo", e.toString());
 
@@ -492,6 +497,7 @@ public class ContentGenerator {
         }
       }
       catch (IOException e) {
+    	  LOGGER.error(e);
       }
     }
     return return_value;
@@ -542,7 +548,8 @@ public class ContentGenerator {
       return_value = sb.toString();
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       LogFileManager.runLogWriter("getLegacyDBInfo", e.toString());
 
       //에러 로그를 남겨준다.
@@ -561,6 +568,7 @@ public class ContentGenerator {
         }
       }
       catch (IOException e) {
+    	  LOGGER.error(e);
       }
     }
     return return_value;
@@ -597,7 +605,8 @@ public class ContentGenerator {
       return_value = sb.toString();
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       LogFileManager.runLogWriter("getLegacyDBInfo", e.toString());
 
       //에러 로그를 남겨준다.
@@ -625,6 +634,7 @@ public class ContentGenerator {
         }
       }
       catch (IOException e) {
+    	  LOGGER.error(e);
       }
     }
 
@@ -661,7 +671,8 @@ public class ContentGenerator {
       return_value = sb.toString();
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       LogFileManager.runLogWriter("getLegacyDBInfo", e.toString());
 
       //에러 로그를 남겨준다.
@@ -689,6 +700,7 @@ public class ContentGenerator {
         }
       }
       catch (IOException e) {
+    	  LOGGER.error(e);
       }
     }
 
@@ -747,7 +759,8 @@ public class ContentGenerator {
         //차후에는 얻어오기만한다.
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //에러 로그를 남겨준다.
         ErrorLogGenerator.setErrorLogFormat(this.getClass().getName(),
@@ -764,6 +777,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
 
         try {
@@ -772,6 +786,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
       }
       return return_value;
@@ -897,7 +912,8 @@ public class ContentGenerator {
         //차후에는 얻어오기만한다.
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
         //첨부파일이 없을때에 에러로 처리하고 싶으면 return_value를 널로 넘긴다.
         //첨부파일이 없더라도 그냥 메일을 보내고 싶으면 return_value를 " " 로 넘긴다.
         //return_value = " ";
@@ -911,6 +927,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
       }
 
@@ -1124,8 +1141,9 @@ public class ContentGenerator {
 		      try {
 				aCipherInterface = new VMCipherImpl();
 			} catch (SGException e2) {
+				LOGGER.error(e2);
 				// TODO Auto-generated catch block
-				e2.printStackTrace();
+				//e2.printStackTrace();
 			}
 				String encMail = null;
 				String templateType1 = null;
@@ -1134,8 +1152,9 @@ public class ContentGenerator {
 				try {
 					templateType1 = readFile ("./template/template.html", "utf-8");
 				} catch (IOException e2) {
+					LOGGER.error(e2);
 					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					//e2.printStackTrace();
 				}
 				
 				try {
@@ -1145,8 +1164,9 @@ public class ContentGenerator {
 							templateType1);	// 템플릿 내용 
 					
 				} catch (SGException e1) {
+					LOGGER.error(e1);
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					//e1.printStackTrace();
 				}
 				try {
 				saveFile("./sample/output/"+ mid +"_screatfile.html", encMail.getBytes(), "UTF-8");
@@ -1154,7 +1174,8 @@ public class ContentGenerator {
 				
 				transferStr_vest = AAA;
 				} catch (IOException e) {
-				e.printStackTrace();
+					LOGGER.error(e);
+				//e.printStackTrace();
 				}
 		
 				//보안메일로 만든 html 파일을 base64로 변환하여 첨부파일 헤어와 본문으로 구성한다.
@@ -1196,8 +1217,8 @@ public class ContentGenerator {
 	  // 보안 PDF 적용		      
       }else if ("Y".equals(secu_att_yn) && "PDF".equals(secu_att_typ)) {
     	  
-      	//HtmlToPdf convert = new HtmlToPdf("../config/TScheduler.conf");
-      	HtmlToPdf convert = new HtmlToPdf("./config/TScheduler.conf");
+      	HtmlToPdf convert = new HtmlToPdf("../config/TScheduler.conf");
+      	//HtmlToPdf convert = new HtmlToPdf("./config/TScheduler.conf");
   		
   		convert.setOrientation("Portrait");			//Portrait:세로  , Landscape:가로
   		convert.setMarginTop(10);					//페이지 프레임 상단 10 여백
@@ -1210,7 +1231,8 @@ public class ContentGenerator {
       		convert.htmlContentToEncryptPdf(transferStr_vest, pdfFile, rENCKEY);
 
       	}catch (Exception e) {
-				e.printStackTrace();
+      		LOGGER.error(e);
+				//e.printStackTrace();
 		}
       	
 			//보안메일로 만든 html 파일을 base64로 변환하여 첨부파일 헤어와 본문으로 구성한다.
@@ -1295,8 +1317,9 @@ public class ContentGenerator {
 		      }
 	
           }catch (Exception e) {
+        	  LOGGER.error(e);
   			// TODO: handle exception
-          	  e.printStackTrace();
+          	  //e.printStackTrace();
           	transferStr = "ErrorEXCEL";
             }
 		      
@@ -1409,7 +1432,8 @@ public class ContentGenerator {
         //차후에는 얻어오기만한다.
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //에러 로그를 남겨준다.
         ErrorLogGenerator.setErrorLogFormat(this.getClass().getName(),
@@ -1426,6 +1450,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
 
         try {
@@ -1434,6 +1459,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
       }
       return return_value;
@@ -1554,7 +1580,8 @@ public class ContentGenerator {
         
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
         //첨부파일이 없을때에 에러로 처리하고 싶으면 return_value를 널로 넘긴다.
         //첨부파일이 없더라도 그냥 메일을 보내고 싶으면 return_value를 " " 로 넘긴다.
         //return_value = " ";
@@ -1568,6 +1595,7 @@ public class ContentGenerator {
           }
         }
         catch (IOException e) {
+        	LOGGER.error(e);
         }
       }
 

@@ -3,12 +3,16 @@ package com.enders.synctmp;
 
 import java.io.*;
 import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 환경 설정 파일를 로드한다.
  */
 public class ConfigLoader
 {
+	private static final Logger LOGGER = LogManager.getLogger(ConfigLoader.class.getName());
+	
     private final static String MAIN_CONFIG = "synctmp.properties";
     private final static String DATABASE_CONFIG = "database.properties";
     private static String conf_dir;
@@ -40,6 +44,7 @@ public class ConfigLoader
                 props.load(is);
             }
             catch (IOException ex) {
+            	LOGGER.error(ex);
                 ex.printStackTrace();
                 System.exit(1);
             }
@@ -49,6 +54,7 @@ public class ConfigLoader
                         is.close();
                     }
                     catch (IOException ex) {
+                    	LOGGER.error(ex);
                     }
                 }
             }
@@ -91,6 +97,7 @@ public class ConfigLoader
                     value = Integer.parseInt(sValue);
                 }
                 catch (Exception ex) {
+                	LOGGER.error(ex);
                 }
             }
         }
@@ -133,7 +140,8 @@ public class ConfigLoader
             properties.load(is);
         }
         catch (IOException ex) {
-            ex.printStackTrace();
+        	LOGGER.error(ex);
+            //ex.printStackTrace();
             System.exit(1);
         }
         finally {
@@ -142,6 +150,7 @@ public class ConfigLoader
                     is.close();
                 }
                 catch (IOException ex) {
+                	LOGGER.error(ex);
                 }
                 is = null;
             }

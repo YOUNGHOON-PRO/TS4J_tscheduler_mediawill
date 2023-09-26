@@ -153,8 +153,9 @@ public class ReceiveManager {
       }
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       WorkDBManager.refreshConn();
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter("getLegacyDBInfo", e.toString());
 
       //에러 로그를 남겨준다.
@@ -169,21 +170,21 @@ public class ReceiveManager {
       try {
         WorkDBManager.releaseConnection(conn);
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
           pstmt.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (rs != null) {
           rs.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return legacyInfo;
   }
@@ -496,8 +497,9 @@ public class ReceiveManager {
       }
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       WorkDBManager.refreshConn();
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter(mID, e.toString());
 
       reserveInfo.setString("STATUS", ReserveStatusCode.R_LIST_EXTRACT_ERROR);
@@ -518,7 +520,7 @@ public class ReceiveManager {
       try {
         WorkDBManager.releaseConnection(conn);
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
@@ -526,7 +528,7 @@ public class ReceiveManager {
           pstmt = null;
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (rs != null) {
@@ -534,7 +536,7 @@ public class ReceiveManager {
           rs = null;
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return rListFileArray;
   }
@@ -878,7 +880,8 @@ public class ReceiveManager {
       }
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       LogFileManager.runLogWriter(mID, e.toString());
 
       reserveInfo.setString("STATUS", ReserveStatusCode.R_LIST_EXTRACT_ERROR);
@@ -902,7 +905,7 @@ public class ReceiveManager {
           rs = null;
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
@@ -910,7 +913,7 @@ public class ReceiveManager {
           pstmt = null;
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (conn != null) {
@@ -918,7 +921,7 @@ public class ReceiveManager {
           conn = null;
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return rListFileArray;
   }
@@ -1040,6 +1043,7 @@ public class ReceiveManager {
             }
           }
           catch (NoSuchElementException exp) {
+        	  LOGGER.error(exp);
             reserveInfo.setString("STATUS",
                                   ReserveStatusCode.R_LIST_EXTRACT_ERROR);
             //복구를 감안해서 예약리스트 Status를 파일로 저장한다.
@@ -1103,6 +1107,7 @@ public class ReceiveManager {
       //파일이 완성된 후에는 파일리스트를 리턴한다.
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       errorLogInfo = new Hashtable();
       errorLogInfo.put("MID", mID);
       errorLogInfo.put("SUBID", subID);
@@ -1118,7 +1123,7 @@ public class ReceiveManager {
       errorLogInfoList.add(errorLogInfo);
       ResultLogManager.InsertResultLog(errorLogInfoList);
 
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter(mID, e.toString());
 
       reserveInfo.setString("STATUS", ReserveStatusCode.R_LIST_EXTRACT_ERROR);
@@ -1142,6 +1147,7 @@ public class ReceiveManager {
         }
       }
       catch (Exception e) {
+    	  LOGGER.error(e);
       }
     }
     return rListFileArray;
@@ -1172,7 +1178,8 @@ public class ReceiveManager {
       fw.write(sb.toString());
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return false;
     }
     finally {
@@ -1181,7 +1188,7 @@ public class ReceiveManager {
           fw.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return true;
   }
@@ -1210,7 +1217,8 @@ public class ReceiveManager {
       //fw.write(sb.toString().getBytes());
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return false;
     }
     finally {
@@ -1219,7 +1227,7 @@ public class ReceiveManager {
           fw.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return true;
   }

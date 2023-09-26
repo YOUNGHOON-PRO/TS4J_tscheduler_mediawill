@@ -377,6 +377,7 @@ public class ReserveManager {
         		//sMail = safeDbEnc.getDecrypt(sMail, "NOT_RNNO");
         		sMail = enc.getJasyptDecryptedFixString(ALGORITHM, KEYSTRING, sMail);
 			} catch (Exception e) {
+				LOGGER.error(e);
 				// TODO: handle exception
 			}
         		
@@ -514,12 +515,13 @@ public class ReserveManager {
       }
     }
     catch (Exception e) {
-    	e.printStackTrace();
+    	LOGGER.error(e);
+    	//e.printStackTrace();
       WorkDBManager.refreshConn();
       if(e instanceof SQLException){
         LOGGER.info("err-sql:" + NEXT_RESERVE_MAIL_QUERY);
       }
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter("setStatusUpdate", e.toString());
 
       //에러 로그에 남겨준다.
@@ -532,21 +534,21 @@ public class ReserveManager {
       try {
         WorkDBManager.releaseConnection(con_work);
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
           pstmt.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (rs != null) {
           rs.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return reserveInfoList;
   }
@@ -616,8 +618,9 @@ public class ReserveManager {
       return_value = true;
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       WorkDBManager.refreshConn();
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter("setStatusUpdate", e.toString());
 
       //에러 로그를 남겨준다.
@@ -634,14 +637,14 @@ public class ReserveManager {
       try {
         WorkDBManager.releaseConnection(con_work);
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
           pstmt.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return return_value;
   }
@@ -721,8 +724,9 @@ public class ReserveManager {
       return_value = true;
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       WorkDBManager.refreshConn();
-      e.printStackTrace();
+      //e.printStackTrace();
       LogFileManager.runLogWriter("setStatusUpdate", e.toString());
 
       //에러 로그를 남겨준다.
@@ -740,19 +744,19 @@ public class ReserveManager {
           fi.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         WorkDBManager.releaseConnection(con_work);
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
 
       try {
         if (pstmt != null) {
           pstmt.close();
         }
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return return_value;
   }
@@ -772,14 +776,15 @@ public class ReserveManager {
       result = new String(sb.toString().getBytes(charset));
     }
     catch (java.io.IOException ie) {
-      ie.printStackTrace();
+    	LOGGER.error(ie);
+      //ie.printStackTrace();
     }
     finally {
       try {
         if (br != null)
           br.close();
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return result;
   }
@@ -798,14 +803,15 @@ public class ReserveManager {
       //result = new String(sb.toString().getBytes(charset), "utf-8" );
     }
     catch (java.io.IOException ie) {
-      ie.printStackTrace();
+    	LOGGER.error(ie);
+      //ie.printStackTrace();
     }
     finally {
       try {
         if (br != null)
           br.close();
       }
-      catch (Exception e) {}
+      catch (Exception e) {LOGGER.error(e);}
     }
     return result;
   }

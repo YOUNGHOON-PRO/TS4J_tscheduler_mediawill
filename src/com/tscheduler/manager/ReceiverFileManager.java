@@ -6,6 +6,8 @@ import java.util.*;
 import com.tscheduler.util.DataUnitInfo;
 import com.tscheduler.util.DataUnitInfoList;
 import com.tscheduler.util.Config;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 수신자 리스트 파일 관리 클래스
@@ -14,6 +16,9 @@ import com.tscheduler.util.Config;
  */
 public class ReceiverFileManager
 {
+	
+	private static final Logger LOGGER = LogManager.getLogger(ReceiverFileManager.class.getName());
+	
 	/**MID에 대한 인코딩된 첨부파일이 있는곳*/
 	public static String RECEIVER_FOLDER = "ReceiverList";
 
@@ -50,7 +55,8 @@ public class ReceiverFileManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			return false;
 		}
 		return true;

@@ -16,6 +16,8 @@ import com.tscheduler.util.ReserveStatusCode;
 import com.tscheduler.util.ErrorStatusCode;
 import com.tscheduler.dbbroker.DBManager;
 import com.tscheduler.dbbroker.WorkDBManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 수신자 리스트 관리 클래스(복구 모듈)
@@ -24,6 +26,8 @@ import com.tscheduler.dbbroker.WorkDBManager;
  */
 public class RecoveryReceiveManager
 {
+	private static final Logger LOGGER = LogManager.getLogger(RecoveryReceiveManager.class.getName());
+	
 	/**복구시 MID에 대해서 예약정보 가져오는 쿼리*/
 	private static final String RECOVERY_MID_QUERY = (new StringBuffer("SELECT ")
 			.append("MID, SUBID, TID, SPOS, SNAME, SMAIL, SID, RPOS, ")
@@ -165,8 +169,9 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			return_value = null;
 		}
@@ -183,6 +188,7 @@ public class RecoveryReceiveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return return_value;
@@ -234,8 +240,9 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			//에러 로그를 남겨준다.
 			ErrorLogGenerator.setErrorLogFormat(this.getClass().getName(), ReserveStatusCode.SQL_ERROR_TYPE,ReserveStatusCode.LEGACY_INFO_FAIL_COMMENT,mID);
@@ -255,6 +262,7 @@ public class RecoveryReceiveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return legacyInfo;
@@ -415,8 +423,9 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 
 			reserveInfo.setString("STATUS",ReserveStatusCode.R_LIST_EXTRACT_ERROR);
 			//복구를 감안해서 예약리스트 Status를 파일로 저장한다.
@@ -440,6 +449,7 @@ public class RecoveryReceiveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return rListFileArray;
@@ -629,7 +639,8 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 
 			reserveInfo.setString("STATUS",ReserveStatusCode.R_LIST_EXTRACT_ERROR);
 
@@ -649,7 +660,7 @@ public class RecoveryReceiveManager
 					conn = null;
 				}
 			}
-			catch(Exception e) {}
+			catch(Exception e) {LOGGER.error(e);}
 
 			try
 			{
@@ -658,7 +669,7 @@ public class RecoveryReceiveManager
 					pstmt = null;
 				}
 			}
-			catch(Exception e) {}
+			catch(Exception e) {LOGGER.error(e);}
 
 			try
 			{
@@ -667,7 +678,7 @@ public class RecoveryReceiveManager
 					rs = null;
 				}
 			}
-			catch(Exception e) {}
+			catch(Exception e) {LOGGER.error(e);}
 		}
 		return rListFileArray;
 	}
@@ -791,6 +802,7 @@ public class RecoveryReceiveManager
 					}
 					catch(NoSuchElementException exp)
 					{
+						LOGGER.error(exp);
 						reserveInfo.setString("STATUS",ReserveStatusCode.R_LIST_EXTRACT_ERROR);
 						//복구를 감안해서 예약리스트 Status를 파일로 저장한다.
 						LogFileManager.setReserveStatusUpdate(mID, subID, ReserveStatusCode.R_LIST_EXTRACT_ERROR);
@@ -840,7 +852,8 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			rListFileArray = null;
 		}
 		finally
@@ -852,6 +865,7 @@ public class RecoveryReceiveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return rListFileArray;
@@ -883,7 +897,8 @@ public class RecoveryReceiveManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			bResult = false;
 		}
 		finally
@@ -896,6 +911,7 @@ public class RecoveryReceiveManager
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return bResult;

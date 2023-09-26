@@ -9,6 +9,8 @@ import com.tscheduler.util.DataUnitInfo;
 import com.tscheduler.util.DataUnitInfoList;
 import com.tscheduler.dbbroker.DBManager;
 import com.tscheduler.dbbroker.WorkDBManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 도메인 그룹핑 클래스
@@ -17,6 +19,8 @@ import com.tscheduler.dbbroker.WorkDBManager;
  */
 public class DomainGroupGenerator
 {
+	private static final Logger LOGGER = LogManager.getLogger(DomainGroupGenerator.class.getName());
+	
 	/**도메인에 포함되지 않은 ETC의 경우*/
 	private static final String ETC_DOMAIN = "etc";
 
@@ -99,7 +103,8 @@ public class DomainGroupGenerator
 					con_work.rollback();
 				}
 				catch(Exception ex) {
-					ex.printStackTrace();
+					LOGGER.error(ex);
+					//ex.printStackTrace();
 				}
 				WorkDBManager.refreshConn();
 				e.printStackTrace();
@@ -115,6 +120,8 @@ public class DomainGroupGenerator
 					}
 				}
 				catch(Exception e) {
+					LOGGER.error(e);
+					
 				}
 			}
 		}
@@ -166,8 +173,9 @@ public class DomainGroupGenerator
 		}
 		catch(Exception e)
 		{
+			LOGGER.error(e);
 			WorkDBManager.refreshConn();
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally
 		{
@@ -182,6 +190,7 @@ public class DomainGroupGenerator
 				}
 			}
 			catch(Exception e) {
+				LOGGER.error(e);
 			}
 		}
 		return return_value;

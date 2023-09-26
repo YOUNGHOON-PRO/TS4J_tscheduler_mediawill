@@ -10,8 +10,12 @@ package com.tscheduler.util;
  */
 
 import java.io.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LogUtil {
+	private static final Logger LOGGER = LogManager.getLogger(LogUtil.class.getName());
+	
   public LogUtil() {
     new File("log").mkdirs();
   }
@@ -26,7 +30,8 @@ public class LogUtil {
       o.close();
     }
     catch (IOException ie) {
-      ie.printStackTrace();
+    	LOGGER.error(ie);
+      //ie.printStackTrace();
     }
   }
 

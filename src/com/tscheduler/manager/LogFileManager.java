@@ -117,7 +117,8 @@ public class LogFileManager {
       return_value = true;
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return_value = false;
     }
     finally {
@@ -128,6 +129,7 @@ public class LogFileManager {
         }
       }
       catch (Exception e) {
+    	  LOGGER.error(e);
       }
     }
     return return_value;
@@ -163,7 +165,8 @@ public class LogFileManager {
       return_value = true;
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return_value = false;
     }
     finally {
@@ -174,7 +177,9 @@ public class LogFileManager {
         }
       }
       catch (Exception e) {
+    	  LOGGER.error(e);
       }
+      
 
       try {
         if (fo != null) {
@@ -183,6 +188,7 @@ public class LogFileManager {
         }
       }
       catch (Exception e) {
+    	  LOGGER.error(e);
       }
     }
     return return_value;
@@ -219,6 +225,7 @@ public class LogFileManager {
 
     }
     catch (Exception e) {
+    	LOGGER.error(e);
       return_value = false;
     }
     return return_value;
@@ -246,7 +253,8 @@ public class LogFileManager {
       return_value = true;
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return_value = false;
     }
     finally {
@@ -281,7 +289,8 @@ public class LogFileManager {
       return_value = true;
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	LOGGER.error(e);
+      //e.printStackTrace();
       return_value = false;
     }
     finally {

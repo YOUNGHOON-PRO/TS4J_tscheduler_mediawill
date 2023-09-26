@@ -8,6 +8,8 @@ package com.tscheduler.manager;
 import java.io.*;
 
 import com.tscheduler.util.Config;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 이메일 파일 관리 클래스
@@ -16,6 +18,7 @@ import com.tscheduler.util.Config;
  */
 public class EmailFileManager
 {
+	private static final Logger LOGGER = LogManager.getLogger(EmailFileManager.class.getName());
 	/**작업중인 폴더에 붙는 이름*/
 	private static final String PRE_WORKING="C";
 	/**생성된 이메일의 확장자*/
@@ -102,7 +105,8 @@ public class EmailFileManager
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				LOGGER.error(e);
+				//e.printStackTrace();
 				return false;
 			}
 			finally
@@ -235,7 +239,8 @@ public class EmailFileManager
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				LOGGER.error(e);
+				//e.printStackTrace();
 				return false;
 			}
 			finally

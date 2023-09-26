@@ -8,6 +8,8 @@ import java.util.*;
 import com.tscheduler.util.EncryptUtil;
 
 import java.io.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 환경설정 파일을 관리하는 클래스
@@ -16,6 +18,8 @@ import java.io.*;
  */
 public class Config
 {
+	private static final Logger LOGGER = LogManager.getLogger(Config.class.getName());
+	
 	/**Default DB Connection Pool의 Size*/
 	public static int DEFAULT_MAX_CONN = 5;
 	/**WORK_DB의 이름*/
@@ -346,6 +350,7 @@ public class Config
 			}
 			catch(Exception e)
 			{
+				LOGGER.error(e);
 				return 0;
 			}
 		}
@@ -418,7 +423,8 @@ public class Config
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 		return emlSize;
 	}
@@ -439,7 +445,8 @@ public class Config
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 		}
 		return rsSize;
 	}
@@ -461,8 +468,8 @@ public class Config
 	{
 		if(isDBSetting)
 		{
-			//String dbCfgPath = "../config/database.conf";
-			String dbCfgPath = "./config/database.conf";
+			String dbCfgPath = "../config/database.conf";
+			//String dbCfgPath = "./config/database.conf";
 			FileInputStream fi = null;
 			
 	        //복호화
@@ -492,12 +499,14 @@ public class Config
 				}
 				catch(Exception e)
 				{
+					LOGGER.error(e);
 					wd_MaxConn = DEFAULT_MAX_CONN;
 				}
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				LOGGER.error(e);
+				//e.printStackTrace();
 			}
 			finally
 			{
@@ -507,6 +516,7 @@ public class Config
 					}
 				}
 				catch(Exception e) {
+					LOGGER.error(e);
 				}
 				isDBSetting = false;
 			}
@@ -525,8 +535,8 @@ public class Config
 	{
 		if(isMainSetting)
 		{
-			//String mainCfgPath = "../config/TScheduler.conf";
-			String mainCfgPath = "./config/TScheduler.conf";
+			String mainCfgPath = "../config/TScheduler.conf";
+			//String mainCfgPath = "./config/TScheduler.conf";
 			FileInputStream fi = null;
 			try
 			{
@@ -560,7 +570,8 @@ public class Config
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				LOGGER.error(e);
+				//e.printStackTrace();
 			}
 			finally
 			{
@@ -571,6 +582,7 @@ public class Config
 					}
 				}
 				catch(Exception e) {
+					LOGGER.error(e);
 				}
 				isMainSetting = false;
 			}

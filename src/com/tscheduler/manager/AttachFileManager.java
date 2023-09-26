@@ -6,6 +6,8 @@ import java.util.*;
 import com.tscheduler.util.DataUnitInfo;
 import com.tscheduler.util.DataUnitInfoList;
 import com.tscheduler.util.Config;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 첨부파일 관리 클래스
@@ -13,7 +15,8 @@ import com.tscheduler.util.Config;
  * @author ymkim
  */
 public class AttachFileManager
-{
+{	
+	private static final Logger LOGGER = LogManager.getLogger(AttachFileManager.class.getName());
 
 	/**MID에 대한 인코딩된 첨부파일이 있는 폴더명*/
 	public static String ATTACH_ENC_FOLDER = "TempStorage";
@@ -51,7 +54,8 @@ public class AttachFileManager
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			LOGGER.error(e);
+			//e.printStackTrace();
 			return false;
 		}
 		return true;
