@@ -54,7 +54,7 @@ public class ResultLogManager
 	private static String RESULT_LOG_QUERY_MARIA = (new StringBuffer()
 			.append("INSERT INTO TS_RESULTLOG(MID, SUBID, TID, RID, RNAME, RMAIL, ")
 			.append("SID, SNAME, SMAIL, RCODE, STIME, REFMID ,WDATE) ")
-			.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE())")).toString();
+			.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())")).toString();
 
 	
 	

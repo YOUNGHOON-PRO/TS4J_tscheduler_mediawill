@@ -26,7 +26,7 @@ public class ContentMakeTimeGenerator
 	private static final String DATE_UPDATE_QUERY_MSSQL = "UPDATE TS_MAILQUEUE SET SDATE=getDate() WHERE MID=?";
 
 	/**상태를 업데이트하는 쿼리*/
-	private static final String DATE_UPDATE_QUERY_MARIA = "UPDATE TS_MAILQUEUE SET SDATE=getDate() WHERE MID=?";
+	private static final String DATE_UPDATE_QUERY_MARIA = "UPDATE TS_MAILQUEUE SET SDATE=now() WHERE MID=?";
 
 	/**
 	 * 컨덴츠 생성 완료 시간을 DB에 update시킨다.
