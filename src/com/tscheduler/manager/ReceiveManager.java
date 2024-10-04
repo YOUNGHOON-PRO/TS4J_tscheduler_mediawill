@@ -39,7 +39,7 @@ public class ReceiveManager {
   private DataUnitInfo reserveInfo;
 
   /**발송그룹저장테이블에서 MID에 해당하는 값을 가져오는 쿼리*/
-  public static final String RUSER_INFO_QUERY = "SELECT MID, SUBID, RID, RNAME, RMAIL, ENCKEY, MAP1, MAP2, MAP3, MAP4, MAP5, MAP6, MAP7, MAP8, MAP9, MAP10, MAP11, MAP12, MAP13, MAP14, MAP15 FROM TS_RECIPIENTINFO WHERE MID = ? AND SUBID = ?";
+  public static final String RUSER_INFO_QUERY = "SELECT MID, SUBID, RID, RNAME, RMAIL, ENCKEY, MAP1, MAP2, MAP3, MAP4, MAP5, MAP6, MAP7, MAP8, MAP9, MAP10, MAP11, MAP12, MAP13, MAP14, MAP15, MAP16, MAP17, MAP18, MAP19, MAP20, MAP21, MAP22, MAP23, MAP24, MAP25, MAP26, MAP27, MAP28, MAP29, MAP30 FROM TS_RECIPIENTINFO WHERE MID = ? AND SUBID = ?";
 
   /**LegacyDB의 정보를 가져오는 쿼리*/
   public static final String LEGACY_INFO_QUERY =
@@ -260,7 +260,22 @@ public class ReceiveManager {
       String map13;
       String map14;
       String map15;
-
+      String map16;
+      String map17;
+      String map18;
+      String map19;
+      String map20;
+      String map21;
+      String map22;
+      String map23;
+      String map24;
+      String map25;
+      String map26;
+      String map27;
+      String map28;
+      String map29;
+      String map30;
+      
       Hashtable errorLogInfo = null;
 
       StringBuffer sb = new StringBuffer();
@@ -293,6 +308,21 @@ public class ReceiveManager {
         map13 = rs.getString("MAP13");
         map14 = rs.getString("MAP14");
         map15 = rs.getString("MAP15");
+        map16 = rs.getString("MAP16");
+        map17 = rs.getString("MAP17");
+        map18 = rs.getString("MAP18");
+        map19 = rs.getString("MAP19");
+        map20 = rs.getString("MAP20");
+        map21 = rs.getString("MAP21");
+        map22 = rs.getString("MAP22");
+        map23 = rs.getString("MAP23");
+        map24 = rs.getString("MAP24");
+        map25 = rs.getString("MAP25");
+        map26 = rs.getString("MAP26");
+        map27 = rs.getString("MAP27");
+        map28 = rs.getString("MAP28");
+        map29 = rs.getString("MAP29");
+        map30 = rs.getString("MAP30");
 
         //복호화
         if("Y".equals(cfg.getEnc_yn())) {
@@ -358,6 +388,51 @@ public class ReceiveManager {
         if (map15 == null || map15.equals("")) {
         	map15 = "flage";
         } 
+        if (map16 == null || map16.equals("")) {
+        	map16 = "flage";
+        } 
+        if (map17 == null || map17.equals("")) {
+        	map17 = "flage";
+        } 
+        if (map18 == null || map18.equals("")) {
+        	map18 = "flage";
+        } 
+        if (map19 == null || map19.equals("")) {
+        	map19 = "flage";
+        } 
+        if (map20 == null || map20.equals("")) {
+        	map20 = "flage";
+        } 
+        if (map21 == null || map21.equals("")) {
+        	map21 = "flage";
+        } 
+        if (map22 == null || map22.equals("")) {
+        	map22 = "flage";
+        } 
+        if (map23 == null || map23.equals("")) {
+        	map23 = "flage";
+        } 
+        if (map24 == null || map24.equals("")) {
+        	map24 = "flage";
+        } 
+        if (map25 == null || map25.equals("")) {
+        	map25 = "flage";
+        } 
+        if (map26 == null || map26.equals("")) {
+        	map26 = "flage";
+        } 
+        if (map27 == null || map27.equals("")) {
+        	map27 = "flage";
+        } 
+        if (map28 == null || map28.equals("")) {
+        	map28 = "flage";
+        } 
+        if (map29 == null || map29.equals("")) {
+        	map29 = "flage";
+        } 
+        if (map30 == null || map30.equals("")) {
+        	map30 = "flage";
+        } 
         
         
         //if(CheckFormat.checkEmail(rMail)			//2003.10.22 영맨고침
@@ -382,7 +457,22 @@ public class ReceiveManager {
 				         .append(map12).append(Config.DELIMITER)
 				         .append(map13).append(Config.DELIMITER)
 				         .append(map14).append(Config.DELIMITER)
-						 .append(map15).append(Config.NEW_LINE)).toString();
+				    	 .append(map15).append(Config.DELIMITER)
+        		  		 .append(map16).append(Config.DELIMITER)
+						 .append(map17).append(Config.DELIMITER)
+						 .append(map18).append(Config.DELIMITER)
+						 .append(map19).append(Config.DELIMITER)
+						 .append(map20).append(Config.DELIMITER)
+						 .append(map21).append(Config.DELIMITER)
+						 .append(map22).append(Config.DELIMITER)
+						 .append(map23).append(Config.DELIMITER)
+						 .append(map24).append(Config.DELIMITER)
+						 .append(map25).append(Config.DELIMITER)
+						 .append(map26).append(Config.DELIMITER)
+						 .append(map27).append(Config.DELIMITER)
+						 .append(map28).append(Config.DELIMITER)
+						 .append(map29).append(Config.DELIMITER)
+						 .append(map30).append(Config.NEW_LINE)).toString();
           
           //receiverStr = receiverStr.replaceAll("\r\n", "<br>");
           receiverStr = receiverStr.replaceAll("\r\n|\r|\n", "<br>");
@@ -433,6 +523,21 @@ public class ReceiveManager {
           errorLogInfo.put("MAP13", map13);
           errorLogInfo.put("MAP14", map14);
           errorLogInfo.put("MAP15", map15);
+          errorLogInfo.put("MAP16", map16);
+          errorLogInfo.put("MAP17", map17);
+          errorLogInfo.put("MAP18", map18);
+          errorLogInfo.put("MAP19", map19);
+          errorLogInfo.put("MAP20", map20);
+          errorLogInfo.put("MAP21", map21);
+          errorLogInfo.put("MAP22", map22);
+          errorLogInfo.put("MAP23", map23);
+          errorLogInfo.put("MAP24", map24);
+          errorLogInfo.put("MAP25", map25);
+          errorLogInfo.put("MAP26", map26);
+          errorLogInfo.put("MAP27", map27);
+          errorLogInfo.put("MAP28", map28);
+          errorLogInfo.put("MAP29", map29);
+          errorLogInfo.put("MAP30", map30);
           
 
           // 이메일의 문법이 틀릴때에는 실패에 대한 상태를 넣어준다.
@@ -646,6 +751,21 @@ public class ReceiveManager {
       String map13;
       String map14;
       String map15;
+      String map16;
+      String map17;
+      String map18;
+      String map19;
+      String map20;
+      String map21;
+      String map22;
+      String map23;
+      String map24;
+      String map25;
+      String map26;
+      String map27;
+      String map28;
+      String map29;
+      String map30;
 
       StringBuffer sb = new StringBuffer();
       String receiverStr = "";
@@ -687,22 +807,21 @@ public class ReceiveManager {
         map13 = (map.get("MAP13")!=null) ? map13 = rs.getString("MAP13") : null;
         map14 = (map.get("MAP14")!=null) ? map14 = rs.getString("MAP14") : null;
         map15 = (map.get("MAP15")!=null) ? map15 = rs.getString("MAP15") : null;
-        
-//        map1 = rs.getString("MAP1");
-//        map2 = rs.getString("MAP2");
-//        map3 = rs.getString("MAP3");
-//        map4 = rs.getString("MAP4");
-//        map5 = rs.getString("MAP5");
-//        map6 = rs.getString("MAP6");
-//        map7 = rs.getString("MAP7");
-//        map8 = rs.getString("MAP8");
-//        map9 = rs.getString("MAP9");
-//        map10 = rs.getString("MAP10");
-//        map11 = rs.getString("MAP11");
-//        map12 = rs.getString("MAP12");
-//        map13 = rs.getString("MAP13");
-//        map14 = rs.getString("MAP14");
-//		map15 = rs.getString("MAP15");
+        map16 = (map.get("MAP16")!=null) ? map16 = rs.getString("MAP16") : null;
+        map17 = (map.get("MAP17")!=null) ? map17 = rs.getString("MAP17") : null;
+        map18 = (map.get("MAP18")!=null) ? map18 = rs.getString("MAP18") : null;
+        map19 = (map.get("MAP19")!=null) ? map19 = rs.getString("MAP19") : null;
+        map20 = (map.get("MAP20")!=null) ? map20 = rs.getString("MAP20") : null;
+        map21 = (map.get("MAP21")!=null) ? map21 = rs.getString("MAP21") : null;
+        map22 = (map.get("MAP22")!=null) ? map22 = rs.getString("MAP22") : null;
+        map23 = (map.get("MAP23")!=null) ? map23 = rs.getString("MAP23") : null;
+        map24 = (map.get("MAP24")!=null) ? map24 = rs.getString("MAP24") : null;
+        map25 = (map.get("MAP25")!=null) ? map25 = rs.getString("MAP25") : null;
+        map26 = (map.get("MAP26")!=null) ? map26 = rs.getString("MAP26") : null;
+        map27 = (map.get("MAP27")!=null) ? map27 = rs.getString("MAP27") : null;
+        map28 = (map.get("MAP28")!=null) ? map28 = rs.getString("MAP28") : null;
+        map29 = (map.get("MAP29")!=null) ? map29 = rs.getString("MAP29") : null;
+        map30 = (map.get("MAP30")!=null) ? map30 = rs.getString("MAP30") : null;
         
         //복호화
         if("Y".equals(cfg.getEnc_yn())) {
@@ -765,6 +884,51 @@ public class ReceiveManager {
         if (map15 == null) {
         	map15 = "flage";
         }    
+        if (map16 == null) {
+        	map16 = "flage";
+        }    
+        if (map17 == null) {
+        	map17 = "flage";
+        }    
+        if (map18 == null) {
+        	map18 = "flage";
+        }    
+        if (map19 == null) {
+        	map19 = "flage";
+        }    
+        if (map20 == null) {
+        	map20 = "flage";
+        }    
+        if (map21 == null) {
+        	map21 = "flage";
+        }    
+        if (map22 == null) {
+        	map22 = "flage";
+        }    
+        if (map23 == null) {
+        	map23 = "flage";
+        }    
+        if (map24 == null) {
+        	map24 = "flage";
+        }    
+        if (map25 == null) {
+        	map25 = "flage";
+        }    
+        if (map26 == null) {
+        	map26 = "flage";
+        }    
+        if (map27 == null) {
+        	map27 = "flage";
+        }    
+        if (map28 == null) {
+        	map28 = "flage";
+        }    
+        if (map29 == null) {
+        	map29 = "flage";
+        }    
+        if (map30 == null) {
+        	map30 = "flage";
+        }    
         
           //if(CheckFormat.checkEmail(rMail))
         if (CheckFormat.checkEmail(rMail) && ! (rID.equals("")) &&
@@ -789,6 +953,21 @@ public class ReceiveManager {
                          .append(map13).append(Config.DELIMITER)
                          .append(map14).append(Config.DELIMITER)
                          .append(map15).append(Config.DELIMITER)
+                         .append(map16).append(Config.DELIMITER)
+                         .append(map17).append(Config.DELIMITER)
+                         .append(map18).append(Config.DELIMITER)
+                         .append(map19).append(Config.DELIMITER)
+                         .append(map20).append(Config.DELIMITER)
+                         .append(map21).append(Config.DELIMITER)
+                         .append(map22).append(Config.DELIMITER)
+                         .append(map23).append(Config.DELIMITER)
+                         .append(map24).append(Config.DELIMITER)
+                         .append(map25).append(Config.DELIMITER)
+                         .append(map26).append(Config.DELIMITER)
+                         .append(map27).append(Config.DELIMITER)
+                         .append(map28).append(Config.DELIMITER)
+                         .append(map29).append(Config.DELIMITER)
+                         .append(map30).append(Config.DELIMITER)
                          .append(Config.NEW_LINE)).toString();
           sb.append(receiverStr);
           receiverNumber++;
