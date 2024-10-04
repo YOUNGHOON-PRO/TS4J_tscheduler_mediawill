@@ -384,7 +384,8 @@ public class ReceiveManager {
 				         .append(map14).append(Config.DELIMITER)
 						 .append(map15).append(Config.NEW_LINE)).toString();
           
-          receiverStr = receiverStr.replaceAll("\r\n", "<br>");
+          //receiverStr = receiverStr.replaceAll("\r\n", "<br>");
+          receiverStr = receiverStr.replaceAll("\r\n|\r|\n", "<br>");
           
           sb.append(receiverStr);
           receiverNumber++;
