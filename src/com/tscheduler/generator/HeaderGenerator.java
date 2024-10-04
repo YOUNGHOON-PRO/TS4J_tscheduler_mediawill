@@ -373,6 +373,28 @@ public class HeaderGenerator implements Header
 		//config파일 사용
 		//if("Y".equals(persoanl_yn)) {
 		
+		// 2024-03-25 keultae, Message-ID 생성
+				fromEmail = fromEmail.trim();
+				int startPos = fromEmail.indexOf("@");
+				// gmail.com Message-ID: Message-ID: <6600d3a3.050a0220.ba001.f522SMTPIN_ADDED_MISSING@mx.google.com>" 처럼
+				// 보이도록 uuid '-'를 '.'으로 변경
+				String uuid = java.util.UUID.randomUUID().toString().replace("-", ".");
+				String messageID = null;
+				StringBuffer sb = new StringBuffer();
+				if(startPos >= 0) {
+					sb.append("<");
+					sb.append(uuid);
+					sb.append(fromEmail.substring(startPos));
+					sb.append(">");
+					messageID = sb.toString();
+				} else {
+					sb.append("<");
+					sb.append(uuid);
+					sb.append(fromEmail);
+					sb.append(">");
+					messageID = sb.toString();
+				}
+		
 		if("Y".equals(title_chk_yn)) {
 			//예외처리 번호들 
 			String[] passedNumbers = persoanl_pass.split(",");  // TScheduler.conf에 PERSONAL_PASS 값을 가져옴
@@ -431,6 +453,8 @@ public class HeaderGenerator implements Header
 				tempSb.append(DATE).append(COLON).append(mailDate).append(NEW_LINE);
 				//Mime구성
 				tempSb.append(MIME_VERSION).append(COLON).append(DEFAULT_MIME_VERSION).append(NEW_LINE);
+				// Message-ID 구성
+				tempSb.append(MESSAGE_ID).append(COLON).append(messageID).append(NEW_LINE);
 				//content_type구성(첨부파일이 있으면 multipart/mixed로 처리한다.)
 				
 				//보안 HTML
@@ -494,6 +518,8 @@ public class HeaderGenerator implements Header
 			tempSb.append(DATE).append(COLON).append(mailDate).append(NEW_LINE);
 			//Mime구성
 			tempSb.append(MIME_VERSION).append(COLON).append(DEFAULT_MIME_VERSION).append(NEW_LINE);
+			// Message-ID 구성
+			tempSb.append(MESSAGE_ID).append(COLON).append(messageID).append(NEW_LINE);
 			//content_type구성(첨부파일이 있으면 multipart/mixed로 처리한다.)
 
 			//보안 HTML

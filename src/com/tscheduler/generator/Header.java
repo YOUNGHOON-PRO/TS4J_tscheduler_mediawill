@@ -73,4 +73,7 @@ interface Header
 	public final String CONTENT_DISPOSITION = "Content-Disposition";
 	/**attachment 필드*/
 	public final String ATTACHMENT = "attachment";
+	
+	/**Message-ID 필드*/
+	public final String MESSAGE_ID = "Message-ID";
 }

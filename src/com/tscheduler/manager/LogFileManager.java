@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 public class LogFileManager {
 	
   private static final Logger LOGGER = LogManager.getLogger(LogFileManager.class.getName());
-	
+  
   /**로그 폴더*/
   public static String LOG_FOLDER = "Log";
   /**예약 메일 로그 폴더*/
