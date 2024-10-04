@@ -29,10 +29,7 @@ public class Config
 	/**MAIN_CFG의 이름*/
 	public static String MAIN_CFG = "MAIN_CFG";
 	/**ROOT_DIRECTORY의 경로*/
-	// keultae
-//	public static String ROOT_DIR = ".";
-	public static String ROOT_DIR = System.getProperty("root.dir");
-	
+	public static String ROOT_DIR = ".";
 	/**구분자 값*/
 	public static String DELIMITER ="''";
 	/**CARRIGE RETURN 값*/
@@ -107,12 +104,8 @@ public class Config
 	/**Email정보 암호와 여부 (TS_mailqueue 의 smail ,TS_recipentinfo의 rmail)*/
 	private String enc_yn;
 
-	// DKIM
-	private String DKIM_TARGET_DOMAIN;
-	private String DKIM_DOMAIN;
-	private String DKIM_SELECTOR;
-	private String DKIM_PRIVATE_KEY;
-
+	
+	
 	/**Config파일의 Singleton Instance파일*/
 	static private Config cfgInstance;       // The single instance
 	/**
@@ -164,7 +157,7 @@ public class Config
 	}
 
 	/**
-	 * DB의 종류(Oracle, Mssql)
+	 * DB의 종류(Oracle, Mssql, MYSQL, MARIA)
 	 * @version 1.0
 	 * @author ymkim
 	 * @return String dbType
@@ -465,38 +458,7 @@ public class Config
           return isMultiLang;
         }
 
-        public String getDKIM_TARGET_DOMAIN() {
-    		return DKIM_TARGET_DOMAIN;
-    	}
 
-    	public void setDKIM_TARGET_DOMAIN(String dKIM_TARGET_DOMAIN) {
-    		DKIM_TARGET_DOMAIN = dKIM_TARGET_DOMAIN;
-    	}
-
-    	public String getDKIM_DOMAIN() {
-    		return DKIM_DOMAIN;
-    	}
-
-    	public void setDKIM_DOMAIN(String dKIM_DOMAIN) {
-    		DKIM_DOMAIN = dKIM_DOMAIN;
-    	}
-
-    	public String getDKIM_SELECTOR() {
-    		return DKIM_SELECTOR;
-    	}
-
-    	public void setDKIM_SELECTOR(String dKIM_SELECTOR) {
-    		DKIM_SELECTOR = dKIM_SELECTOR;
-    	}
-
-    	public String getDKIM_PRIVATE_KEY() {
-    		return DKIM_PRIVATE_KEY;
-    	}
-
-    	public void setDKIM_PRIVATE_KEY(String dKIM_PRIVATE_KEY) {
-    		DKIM_PRIVATE_KEY = dKIM_PRIVATE_KEY;
-    	}
-    	
 	/**
 	 * DB연결에 관련한 config파일을 읽어들인다.
 	 * @version 1.0
@@ -508,8 +470,6 @@ public class Config
 		{
 			String dbCfgPath = "../config/database.conf";
 			//String dbCfgPath = "./config/database.conf";
-			// keultae 
-//			String dbCfgPath = System.getProperty("root.dir") + "/config/database.conf";
 			FileInputStream fi = null;
 			
 	        //복호화
@@ -519,12 +479,9 @@ public class Config
 			
 			try
 			{
-				File file = new File(dbCfgPath);
-				fi = new FileInputStream(file);
+				fi = new FileInputStream(new File(dbCfgPath));
 				Properties prop = new Properties();
 				prop.load(fi);
-				// keultae replace System Property 
-                PropertiesPlugin.repalceSystemProperty(file, prop);
 				wd_Driver = prop.getProperty("DRIVER");
 				wd_URL = prop.getProperty("URL");
 				wd_UserID = prop.getProperty("USER");
@@ -580,17 +537,13 @@ public class Config
 		{
 			String mainCfgPath = "../config/TScheduler.conf";
 			//String mainCfgPath = "./config/TScheduler.conf";
-			// keultae
-			//String mainCfgPath = System.getProperty("root.dir") + "/config/TScheduler.conf";
 			FileInputStream fi = null;
 			try
 			{
-				File file = new File(mainCfgPath);
-				fi = new FileInputStream(file);
+
+				fi = new FileInputStream(new File(mainCfgPath));
 				Properties prop = new Properties();
 				prop.load(fi);
-				// keultae replace System Property 
-                PropertiesPlugin.repalceSystemProperty(file, prop);
 
 				//WorkDB에서 예약리스트를 받아들일 갯수
 				wd_DbType 	=  prop.getProperty("WD_DB_TYPE");
@@ -607,20 +560,13 @@ public class Config
 				mergyList =  prop.getProperty("MERGY_LIST");
 				emlNumPerFolder =  prop.getProperty("EML_NUM_PER_FOLDER");
 				legacyRSListSize =  prop.getProperty("LEGACY_RS_LIST_SIZE");
-                isMultiLang = new Boolean(prop.getProperty("ISMULTILANG","false")).booleanValue();
+                                isMultiLang = new Boolean(prop.getProperty("ISMULTILANG","false")).booleanValue();
 				DebugOutput = Boolean.getBoolean(prop.getProperty("DEBUG_OUTPUT", "true"));
 				
 				personal_yn = prop.getProperty("PERSONAL_YN");
 				personal_pass = prop.getProperty("PERSONAL_PASS");
 				
 				enc_yn = prop.getProperty("ENC_YN");
-				
-				// DKIM
-				DKIM_TARGET_DOMAIN = prop.getProperty("DKIM.target.domain", "");
-				DKIM_DOMAIN = prop.getProperty("DKIM.domain");
-				DKIM_SELECTOR = prop.getProperty("DKIM.selector");
-				DKIM_PRIVATE_KEY = prop.getProperty("DKIM.private.key");
-				
 			}
 			catch(Exception e)
 			{

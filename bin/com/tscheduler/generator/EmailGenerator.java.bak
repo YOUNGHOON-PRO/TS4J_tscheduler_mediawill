@@ -15,22 +15,20 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * 이메일 생성 전체 관리 클래스
- * 
  * @version 1.0
  * @author ymkim
  */
 public class EmailGenerator {
-
+	
 	private static final Logger LOGGER = LogManager.getLogger(EmailGenerator.class.getName());
-
-  /** 구분자 */
+	
+  /**구분자*/
   private static final String CNT_CODE_DELIM = "``";
-  private static String persoanl_pass = "";
-  private static String persoanl_yn = "";
+  private static String persoanl_pass="";
+  private static String persoanl_yn ="";
 
   /**
    * 이메일을 만든다.
-   * 
    * @version 1.0
    * @author ymkim
    * @param ruserFileList 수신자파일리스트
@@ -39,11 +37,11 @@ public class EmailGenerator {
   public static void makeEmail(File[] rUserFileList, DataUnitInfo reserveInfo) {
     ArrayList errorLogInfoList = new ArrayList();
     Hashtable errorLogInfo = null;
-    // 수신확인 호스트정보와 머지리스트 값
+    //수신확인 호스트정보와 머지리스트 값
     Config cfg = Config.getInstance();
     cfg.loadConfig(Config.MAIN_CFG);
     String receiveDefineHost = cfg.getReceiveDefineHost();  //http://103.9.32.183:20000/TS/Receiver/ReceiverCheck.jsp
-    String mergeList = cfg.getMergyList();	//RID``RNAME``RMAIL``HRNAME``ENCKEY``MAP1``MAP2``MAP3``MAP4``MAP5``MAP6``MAP7``MAP8``MAP9``MAP10``MAP11``MAP12``MAP13``MAP14``MAP15``BIZKEY``
+    String mergeList = cfg.getMergyList();	//RID``RNAME``RMAIL``HRNAME``ENCKEY``MAP1``MAP2``MAP3``MAP4``MAP5``MAP6``MAP7``MAP8``MAP9``MAP10``MAP11``MAP12``MAP13``MAP14``MAP15
     boolean bMergeContents = false;
     int legacyRSListSize = cfg.getLegacyRSListSize();	//1000
     StringBuffer sb = null;
@@ -96,7 +94,6 @@ public class EmailGenerator {
     String	map13 = reserveInfo.getString("MAP13");
     String	map14 = reserveInfo.getString("MAP14");
     String	map15 = reserveInfo.getString("MAP15");
-    String	bizkey = reserveInfo.getString("BIZKEY");
     
     String	secu_att_yn = reserveInfo.getString("SECU_ATT_YN");
     String	source_url = reserveInfo.getString("SOURCE_URL");
@@ -115,7 +112,8 @@ public class EmailGenerator {
     if (tokenCount != 0) {
       String tempContents = contents.toLowerCase();
       for (int i = 0; i < tokenCount; i++) {
-        if (tempContents.indexOf("$:" + st1.nextToken().trim().toLowerCase() + ":$") != -1) {
+        if (tempContents.indexOf("$:" + st1.nextToken().trim().toLowerCase() +
+                                 ":$") != -1) {
           bMergeContents = true;
           break;
         }
@@ -143,7 +141,7 @@ public class EmailGenerator {
         	rawContent_vest = content.getContent_vest(mID, ctnPos, source_url);
         
         //보안 PDF
-        }else if("Y".equals(secu_att_yn) && "PDF".equals(secu_att_typ)){        	
+        }else if("Y".equals(secu_att_yn) && "PDF".equals(secu_att_typ)){
         	rawContent_vest = content.getContent_vest(mID, ctnPos, source_url);
         
         //보안 EXCEL
@@ -175,10 +173,7 @@ public class EmailGenerator {
          ** 여기서 컨덴츠와 첨부파일이 제대로 가져왔는지 체크한후에 제대로 가져오지 않으면 컨덴츠 생성을 해주지 않으며 또한 에러처리를 해준다.**
      *************************************************/
     //LOGGER.info(rawContent);
-    if (rawContent == null || attachContent == null || attachContent.equals("personal_error")) { //첨부파일이나 혹은 본문내용이
-    																							 // 제대로 가져오지 못하면
-    																							 // 컨덴츠 생성을 하지
-    																							 // 않는다.
+    if (rawContent == null || attachContent == null || attachContent.equals("personal_error")) { //첨부파일이나 혹은 본문내용이 제대로 가져오지 못하면 컨덴츠 생성을 하지 않는다.
       errorLogInfo = new Hashtable();
       errorLogInfo.put("MID", mID);
       errorLogInfo.put("SUBID", subID);
@@ -210,7 +205,6 @@ public class EmailGenerator {
           errorLogInfo.put("MAP13", map13);
           errorLogInfo.put("MAP14", map14);
           errorLogInfo.put("MAP15", map15);
-          errorLogInfo.put("BIZKEY", bizkey);
     	  
     	  ErrorLogGenerator.setErrorLogFormat("EmailGenerator",
                   ReserveStatusCode.CONTENTS_FAIL_TYPE,
@@ -236,7 +230,6 @@ public class EmailGenerator {
           errorLogInfo.put("MAP13", map13);
           errorLogInfo.put("MAP14", map14);
           errorLogInfo.put("MAP15", map15);
-          errorLogInfo.put("BIZKEY", bizkey);
 
           ErrorLogGenerator.setErrorLogFormat("EmailGenerator",
                                               ReserveStatusCode.CONTENTS_FAIL_TYPE,
@@ -289,7 +282,6 @@ public class EmailGenerator {
       String[] rMAP13 = rUserList.getStringArray("MAP13");
       String[] rMAP14 = rUserList.getStringArray("MAP14");
       String[] rMAP15 = rUserList.getStringArray("MAP15");
-      String[] rBIZKEY = rUserList.getStringArray("BIZKEY");
       
       //수신자의 수를 센다.
       int rUserNum = rMailList.length;
@@ -325,9 +317,10 @@ public class EmailGenerator {
           //header 생성
           String headerStr = header.generateHeader(subject, rNameList[i], rMailList[i], isAttach, isHtml, (Hashtable) mergyArray.get(i),ctnPos,secu_att_yn, secu_att_typ, title_chk_yn, body_chk_yn, attach_file_chk_yn, secu_mail_chk_yn);
 /*
-					 * StringBuffer dt = new StringBuffer(); dt.append(rNameList[i]).append("<br>");
-					 * dt.append(((Hashtable) mergyArray.get(i)).get("RNAME"));
-					 * LogUtil.logCurFile(dt.toString());
+          StringBuffer dt = new StringBuffer();
+          dt.append(rNameList[i]).append("<br>");
+          dt.append(((Hashtable) mergyArray.get(i)).get("RNAME"));
+          LogUtil.logCurFile(dt.toString());
 */
           String contentStr;
           String raw_receiveStr = "";
@@ -430,11 +423,12 @@ public class EmailGenerator {
 			if((CellCK) || (TellCK) || (PersonalCK) || (EmailCK)) {
 				contentStr = "personal_error";
 			}
-
-						// ---------------------------------------------------------------------------
-					}
-
-					// 개인정보 체크로 headerStr도 체크
+			
+       		//--------------------------------------------------------------------------- 
+         }
+          
+          
+          //개인정보 체크로 headerStr도 체크
           if (contentStr == null || headerStr ==null || contentStr.equals("personal_error") || contentStr.equals("ErrorEXCEL")) {
             errorLogInfo = new Hashtable();
             errorLogInfo.put("MID", mID);
@@ -495,27 +489,7 @@ public class EmailGenerator {
 
           //완전한 본문 만들기
           String email = headerStr + contentStr;
-
-		String targetDomains = Config.getInstance().getDKIM_TARGET_DOMAIN();
-		if (!targetDomains.equals("")) {
-			targetDomains = targetDomains.trim().toLowerCase();
-
-			// 메일 수신자의 도메인 추출
-			String toDomain = rMailList[i].split("@")[1].trim().toLowerCase();
-			LOGGER.info("DKIM 적용 대상 도메인 목록 {}, 수신자 도메인: {}", targetDomains, toDomain);
-
-			if (targetDomains.indexOf(toDomain) > -1) {
-//							LOGGER.debug("Normal MIME<<<{}>>>", email);
-				String dkimMime = SimpleJavaDKIMSign.addDKIMSignature(
-						email, 
-						Config.getInstance().getDKIM_DOMAIN(),
-						Config.getInstance().getDKIM_SELECTOR(),
-						Config.getInstance().getDKIM_PRIVATE_KEY()
-					);
-//							LOGGER.debug("DKIM MIME<<<{}>>>", dkimMime);
-				email = dkimMime;
-			} 
-		}
+          
 
           //*************************************************
            //NeoSMTP에서 필요한 여러 정보를 넣어준다.
@@ -533,7 +507,8 @@ public class EmailGenerator {
           smtpSendInfo.put("REFMID", refMID);
           smtpSendInfo.put("REQUEST_KEY", requestKey);
 
-		  String smtpInfo = SMTPSendInfoGenerator.generateSMTPSendInfo(smtpSendInfo);
+          String smtpInfo = SMTPSendInfoGenerator.generateSMTPSendInfo(
+              smtpSendInfo);
 
           //SMTP 전송정보+ 이메일정보
           String sendEmail = smtpInfo + email;
@@ -580,7 +555,8 @@ public class EmailGenerator {
                                               ReserveStatusCode.CONTENTS_SUCCESS);
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //컨덴츠 생성 실패했을때는 실패에 대한 상태를 넣어준다.
         reserveInfo.setString("STATUS", ReserveStatusCode.CONTENTS_FAIL);
@@ -665,7 +641,6 @@ public class EmailGenerator {
     String	map13 = reserveInfo.getString("MAP13");
     String	map14 = reserveInfo.getString("MAP14");
     String	map15 = reserveInfo.getString("MAP15");
-    String	bizkey = reserveInfo.getString("BIZKEY");
     
     String	secu_att_yn = reserveInfo.getString("SECU_ATT_YN");
     String	source_url = reserveInfo.getString("SOURCE_URL");
@@ -684,7 +659,8 @@ public class EmailGenerator {
     if (tokenCount != 0) {
       String tempContents = contents.toLowerCase();
       for (int i = 0; i < tokenCount; i++) {
-		if (tempContents.indexOf("$:" + st1.nextToken().trim().toLowerCase() + ":$") != -1) {
+        if (tempContents.indexOf("$:" + st1.nextToken().trim().toLowerCase() +
+                                 ":$") != -1) {
           bMergeContents = true;
           break;
         }
@@ -775,7 +751,6 @@ public class EmailGenerator {
       String[] rMAP13 = rUserList.getStringArray("MAP13");
       String[] rMAP14 = rUserList.getStringArray("MAP14");
       String[] rMAP15 = rUserList.getStringArray("MAP15");
-      String[] rBIZKEY = rUserList.getStringArray("BIZKEY");
       
       //수신자의 수를 센다.
       int rUserNum = rNameList.length;
@@ -987,7 +962,8 @@ public class EmailGenerator {
         DebugTrace.println("작업 완료...");
       }
       catch (Exception e) {
-        e.printStackTrace();
+    	  LOGGER.error(e);
+        //e.printStackTrace();
 
         //컨덴츠 생성 실패했을때는 실패에 대한 상태를 넣어준다.
         reserveInfo.setString("STATUS", ReserveStatusCode.CONTENTS_FAIL);

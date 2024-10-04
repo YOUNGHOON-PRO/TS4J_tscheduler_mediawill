@@ -52,5 +52,14 @@
 	<classpathentry kind="lib" path="D:/eclipse/lib/HtmlToExcel/개발jar/HtmlToExcel.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/lib/jasypt-1.9.3.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/eclipse_2023_mediawill/lib/mariadb-java-client-3.0.7.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/commons-nulls-1.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/eddsa-0.3.0.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/jakarta.activation-api-2.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/jakarta.mail-2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/javarose_crypto-1.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/mail.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/utils-data-fetcher-4.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/utils-mail-dkim-3.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/Google드라이브/02.Company_Business/ENDERS/ENDERS_Solution/Maintenance/20230913_미디어윌/20241003_DKIM TLS 작업/mediawill_dkim작업/DKIM작업내용/dkim/auto/tscheduler_lib/zt-zip-1.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
