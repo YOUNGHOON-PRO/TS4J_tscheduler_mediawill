@@ -428,6 +428,11 @@ public class TransferFileToDataGenerator
                                         	rUserInfo.setString("MAP21",map21);
                                         }
                                         if(map23.equals("flage")){
+                                        	rUserInfo.setString("MAP22","");
+                                        }else{
+                                        	rUserInfo.setString("MAP22",map23);
+                                        }
+                                        if(map23.equals("flage")){
                                         	rUserInfo.setString("MAP23","");
                                         }else{
                                         	rUserInfo.setString("MAP23",map23);
