@@ -370,6 +370,13 @@ public class ContentGenerator {
       return false;
     }
 
+    /*
+     * 20240/07/18 조종태 현재까지 프로젝트에서 100% HTML을 사용하고 있기 때문에 true로 리턴
+     * 웹 저작기에서 html 태그가 정상적으로 있는 HTML 파일을 불러왔는데, html 태그를 제거해서 HTML로 인식하지 못하는 문제 발생
+     * cntPos가 2(FILE)일때 파일 경로가 저장되는데, 파일명의 확장자를 tmp로 저장하여 HTML로 인식하지 못하는 문제 발생
+     */
+    
+    /*
     if (ctnPos == 1) {
       if ( (tmpContent.toUpperCase()).indexOf("<HTML") == -1) {
         return false; //아무것도 찾은것이 없다
@@ -386,7 +393,9 @@ public class ContentGenerator {
       else {
         return false;
       }
-    }
+    }*/
+    
+    return true;
   }
 
   /**
