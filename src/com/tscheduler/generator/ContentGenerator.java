@@ -1227,7 +1227,7 @@ public class ContentGenerator {
       }else if ("Y".equals(secu_att_yn) && "PDF".equals(secu_att_typ)) {
     	  
       	HtmlToPdf convert = new HtmlToPdf("../config/TScheduler.conf");
-      	//HtmlToPdf convert = new HtmlToPdf("./config/TScheduler.conf");
+//      	HtmlToPdf convert = new HtmlToPdf("./config/TScheduler.conf");
   		
   		convert.setOrientation("Portrait");			//Portrait:세로  , Landscape:가로
   		convert.setMarginTop(10);					//페이지 프레임 상단 10 여백

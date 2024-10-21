@@ -71,7 +71,27 @@ public class TransferFileToDataGenerator
 			String map28="";
 			String map29="";
 			String map30="";
-			
+			String map31="";
+			String map32="";
+			String map33="";
+			String map34="";
+			String map35="";
+			String map36="";
+			String map37="";
+			String map38="";
+			String map39="";
+			String map40="";
+			String map41="";
+			String map42="";
+			String map43="";
+			String map44="";
+			String map45="";
+			String map46="";
+			String map47="";
+			String map48="";
+			String map49="";
+			String map50="";
+
 			Hashtable errorLogInfo = null;
 
 			while((tempStr=br.readLine())!=null)
@@ -116,7 +136,27 @@ public class TransferFileToDataGenerator
 						map28 = st.nextToken();
 						map29 = st.nextToken();
 						map30 = st.nextToken();
-						
+						map31 = st.nextToken();
+						map32 = st.nextToken();
+						map33 = st.nextToken();
+						map34 = st.nextToken();
+						map35 = st.nextToken();
+						map36 = st.nextToken();
+						map37 = st.nextToken();
+						map38 = st.nextToken();
+						map39 = st.nextToken();
+						map40 = st.nextToken();
+						map41 = st.nextToken();
+						map42 = st.nextToken();
+						map43 = st.nextToken();
+						map44 = st.nextToken();
+						map45 = st.nextToken();
+						map46 = st.nextToken();
+						map47 = st.nextToken();
+						map48 = st.nextToken();
+						map49 = st.nextToken();
+						map50 = st.nextToken();
+
 					}
 					catch(NoSuchElementException exp)
 					{
@@ -169,7 +209,27 @@ public class TransferFileToDataGenerator
 					rUserInfo.setString("MAP28",map28);
 					rUserInfo.setString("MAP29",map29);
 					rUserInfo.setString("MAP30",map30);
-					
+					rUserInfo.setString("MAP31",map31);
+					rUserInfo.setString("MAP32",map32);
+					rUserInfo.setString("MAP33",map33);
+					rUserInfo.setString("MAP34",map34);
+					rUserInfo.setString("MAP35",map35);
+					rUserInfo.setString("MAP36",map36);
+					rUserInfo.setString("MAP37",map37);
+					rUserInfo.setString("MAP38",map38);
+					rUserInfo.setString("MAP39",map39);
+					rUserInfo.setString("MAP40",map40);
+					rUserInfo.setString("MAP41",map41);
+					rUserInfo.setString("MAP42",map42);
+					rUserInfo.setString("MAP43",map43);
+					rUserInfo.setString("MAP44",map44);
+					rUserInfo.setString("MAP45",map45);
+					rUserInfo.setString("MAP46",map46);
+					rUserInfo.setString("MAP47",map47);
+					rUserInfo.setString("MAP48",map48);
+					rUserInfo.setString("MAP49",map49);
+					rUserInfo.setString("MAP50",map50);
+
 					rUserList.addDataUnitInfo(rUserInfo);
 				}
 			}
@@ -249,6 +309,26 @@ public class TransferFileToDataGenerator
             			String map28="";      
             			String map29="";      
             			String map30="";      
+            			String map31="";      
+            			String map32="";      
+            			String map33="";      
+            			String map34="";      
+            			String map35="";      
+            			String map36="";      
+            			String map37="";      
+            			String map38="";      
+            			String map39="";      
+            			String map40="";      
+            			String map41="";      
+            			String map42="";      
+            			String map43="";      
+            			String map44="";      
+            			String map45="";      
+            			String map46="";      
+            			String map47="";      
+            			String map48="";      
+            			String map49="";      
+            			String map50="";      
 
                         Hashtable errorLogInfo = null;
 
@@ -294,7 +374,26 @@ public class TransferFileToDataGenerator
                         						map28 = st.nextToken();
                         						map29 = st.nextToken();
                         						map30 = st.nextToken();
-                        						
+                        						map31 = st.nextToken();
+                        						map32 = st.nextToken();
+                        						map33 = st.nextToken();
+                        						map34 = st.nextToken();
+                        						map35 = st.nextToken();
+                        						map36 = st.nextToken();
+                        						map37 = st.nextToken();
+                        						map38 = st.nextToken();
+                        						map39 = st.nextToken();
+                        						map40 = st.nextToken();
+                        						map41 = st.nextToken();
+                        						map42 = st.nextToken();
+                        						map43 = st.nextToken();
+                        						map44 = st.nextToken();
+                        						map45 = st.nextToken();
+                        						map46 = st.nextToken();
+                        						map47 = st.nextToken();
+                        						map48 = st.nextToken();
+                        						map49 = st.nextToken();
+                        						map50 = st.nextToken();
                                         }
                                         catch(NoSuchElementException exp)
                                         {
@@ -317,162 +416,57 @@ public class TransferFileToDataGenerator
                                         rUserInfo.setString("HRNAME",rName);
                                         rUserInfo.setString("RMAIL",rMail);
                                         
-                                        if(enckey.equals("flage")){
-                                        	rUserInfo.setString("ENCKEY","");
-                                        }else{
-                                        	rUserInfo.setString("ENCKEY",enckey);
-                                        }
-                                        if(map1.equals("flage")){
-                                        	rUserInfo.setString("MAP1","");
-                                        }else{
-                                        	rUserInfo.setString("MAP1",map1);
-                                        }
-                                        if(map2.equals("flage")){
-                                        	rUserInfo.setString("MAP2","");
-                                        }else{
-                                        	rUserInfo.setString("MAP2",map2);
-                                        }
-                                        if(map3.equals("flage")){
-                                        	rUserInfo.setString("MAP3","");
-                                        }else{
-                                        	rUserInfo.setString("MAP3",map3);
-                                        }
-                                        if(map4.equals("flage")){
-                                        	rUserInfo.setString("MAP4","");
-                                        }else{
-                                        	rUserInfo.setString("MAP4",map4);
-                                        }
-                                        if(map5.equals("flage")){
-                                        	rUserInfo.setString("MAP5","");
-                                        }else{
-                                        	rUserInfo.setString("MAP5",map5);
-                                        }
-                                        if(map6.equals("flage")){
-                                        	rUserInfo.setString("MAP6","");
-                                        }else{
-                                        	rUserInfo.setString("MAP6",map6);
-                                        }
-                                        if(map7.equals("flage")){
-                                        	rUserInfo.setString("MAP7","");
-                                        }else{
-                                        	rUserInfo.setString("MAP7",map7);
-                                        }
-                                        if(map8.equals("flage")){
-                                        	rUserInfo.setString("MAP8","");
-                                        }else{
-                                        	rUserInfo.setString("MAP8",map8);
-                                        }
-                                        if(map9.equals("flage")){
-                                        	rUserInfo.setString("MAP9","");
-                                        }else{
-                                        	rUserInfo.setString("MAP9",map9);
-                                        }
-                                        if(map10.equals("flage")){
-                                        	rUserInfo.setString("MAP10","");
-                                        }else{
-                                        	rUserInfo.setString("MAP10",map10);
-                                        }
-                                        if(map11.equals("flage")){
-                                        	rUserInfo.setString("MAP11","");
-                                        }else{
-                                        	rUserInfo.setString("MAP11",map11);
-                                        }
-                                        if(map12.equals("flage")){
-                                        	rUserInfo.setString("MAP12","");
-                                        }else{
-                                        	rUserInfo.setString("MAP12",map12);
-                                        }
-                                        if(map13.equals("flage")){
-                                        	rUserInfo.setString("MAP13","");
-                                        }else{
-                                        	rUserInfo.setString("MAP13",map13);
-                                        }
-                                        if(map14.equals("flage")){
-                                        	rUserInfo.setString("MAP14","");
-                                        }else{
-                                        	rUserInfo.setString("MAP14",map14);
-                                        }
-                                        if(map15.equals("flage")){
-                                        	rUserInfo.setString("MAP15","");
-                                        }else{
-                                        	rUserInfo.setString("MAP15",map15);
-                                        }
-                                        if(map16.equals("flage")){
-                                        	rUserInfo.setString("MAP16","");
-                                        }else{
-                                        	rUserInfo.setString("MAP16",map16);
-                                        }
-                                        if(map17.equals("flage")){
-                                        	rUserInfo.setString("MAP17","");
-                                        }else{
-                                        	rUserInfo.setString("MAP17",map17);
-                                        }
-                                        if(map18.equals("flage")){
-                                        	rUserInfo.setString("MAP18","");
-                                        }else{
-                                        	rUserInfo.setString("MAP18",map18);
-                                        }
-                                        if(map19.equals("flage")){
-                                        	rUserInfo.setString("MAP19","");
-                                        }else{
-                                        	rUserInfo.setString("MAP19",map19);
-                                        }
-                                        if(map20.equals("flage")){
-                                        	rUserInfo.setString("MAP20","");
-                                        }else{
-                                        	rUserInfo.setString("MAP20",map20);
-                                        }
-                                        if(map21.equals("flage")){
-                                        	rUserInfo.setString("MAP21","");
-                                        }else{
-                                        	rUserInfo.setString("MAP21",map21);
-                                        }
-                                        if(map23.equals("flage")){
-                                        	rUserInfo.setString("MAP22","");
-                                        }else{
-                                        	rUserInfo.setString("MAP22",map23);
-                                        }
-                                        if(map23.equals("flage")){
-                                        	rUserInfo.setString("MAP23","");
-                                        }else{
-                                        	rUserInfo.setString("MAP23",map23);
-                                        }
-                                        if(map24.equals("flage")){
-                                        	rUserInfo.setString("MAP24","");
-                                        }else{
-                                        	rUserInfo.setString("MAP24",map24);
-                                        }
-                                        if(map25.equals("flage")){
-                                        	rUserInfo.setString("MAP25","");
-                                        }else{
-                                        	rUserInfo.setString("MAP25",map25);
-                                        }
-                                        if(map26.equals("flage")){
-                                        	rUserInfo.setString("MAP26","");
-                                        }else{
-                                        	rUserInfo.setString("MAP26",map26);
-                                        }
-                                        if(map27.equals("flage")){
-                                        	rUserInfo.setString("MAP27","");
-                                        }else{
-                                        	rUserInfo.setString("MAP27",map27);
-                                        }
-                                        if(map28.equals("flage")){
-                                        	rUserInfo.setString("MAP28","");
-                                        }else{
-                                        	rUserInfo.setString("MAP28",map28);
-                                        }
-                                        if(map29.equals("flage")){
-                                        	rUserInfo.setString("MAP29","");
-                                        }else{
-                                        	rUserInfo.setString("MAP29",map29);
-                                        }
-                                        if(map30.equals("flage")){
-                                        	rUserInfo.setString("MAP30","");
-                                        }else{
-                                        	rUserInfo.setString("MAP30",map30);
-                                        }
-                                        
+                                        if(enckey.equals("flage")){	rUserInfo.setString("ENCKEY",""); }else{ rUserInfo.setString("ENCKEY",enckey); }
+                                        if(map1.equals("flage")){ rUserInfo.setString("MAP1",""); }else{ rUserInfo.setString("MAP1",map1); }
+                                        if(map2.equals("flage")){ rUserInfo.setString("MAP2",""); }else{ rUserInfo.setString("MAP2",map2); }
+                                        if(map3.equals("flage")){ rUserInfo.setString("MAP3",""); }else{ rUserInfo.setString("MAP3",map3); }
+                                        if(map4.equals("flage")){ rUserInfo.setString("MAP4",""); }else{ rUserInfo.setString("MAP4",map4); }
+                                        if(map5.equals("flage")){ rUserInfo.setString("MAP5",""); }else{ rUserInfo.setString("MAP5",map5); }
+                                        if(map6.equals("flage")){ rUserInfo.setString("MAP6",""); }else{ rUserInfo.setString("MAP6",map6); }
+                                        if(map7.equals("flage")){ rUserInfo.setString("MAP7",""); }else{ rUserInfo.setString("MAP7",map7); }
+                                        if(map8.equals("flage")){ rUserInfo.setString("MAP8",""); }else{ rUserInfo.setString("MAP8",map8); }
+                                        if(map9.equals("flage")){ rUserInfo.setString("MAP9",""); }else{ rUserInfo.setString("MAP9",map9); }
+                                        if(map10.equals("flage")){ rUserInfo.setString("MAP10",""); }else{ rUserInfo.setString("MAP10",map10); }
+										if(map11.equals("flage")){ rUserInfo.setString("MAP11",""); }else{ rUserInfo.setString("MAP11",map11); }
+										if(map12.equals("flage")){ rUserInfo.setString("MAP12",""); }else{ rUserInfo.setString("MAP12",map12); }
+										if(map13.equals("flage")){ rUserInfo.setString("MAP13",""); }else{ rUserInfo.setString("MAP13",map13); }
+										if(map14.equals("flage")){ rUserInfo.setString("MAP14",""); }else{ rUserInfo.setString("MAP14",map14); }
+										if(map15.equals("flage")){ rUserInfo.setString("MAP15",""); }else{ rUserInfo.setString("MAP15",map15); }
+										if(map16.equals("flage")){ rUserInfo.setString("MAP16",""); }else{ rUserInfo.setString("MAP16",map16); }
+										if(map17.equals("flage")){ rUserInfo.setString("MAP17",""); }else{ rUserInfo.setString("MAP17",map17); }
+										if(map18.equals("flage")){ rUserInfo.setString("MAP18",""); }else{ rUserInfo.setString("MAP18",map18); }
+										if(map19.equals("flage")){ rUserInfo.setString("MAP19",""); }else{ rUserInfo.setString("MAP19",map19); }
+                                        if(map20.equals("flage")){ rUserInfo.setString("MAP20",""); }else{ rUserInfo.setString("MAP20",map20); }
+                                        if(map21.equals("flage")){ rUserInfo.setString("MAP21",""); }else{ rUserInfo.setString("MAP21",map21); }
+                                        if(map22.equals("flage")){ rUserInfo.setString("MAP22",""); }else{ rUserInfo.setString("MAP22",map22); }
+                                        if(map23.equals("flage")){ rUserInfo.setString("MAP23",""); }else{ rUserInfo.setString("MAP23",map23); }
+                                        if(map24.equals("flage")){ rUserInfo.setString("MAP24",""); }else{ rUserInfo.setString("MAP24",map24); }
+                                        if(map25.equals("flage")){ rUserInfo.setString("MAP25",""); }else{ rUserInfo.setString("MAP25",map25); }
+                                        if(map26.equals("flage")){ rUserInfo.setString("MAP26",""); }else{ rUserInfo.setString("MAP26",map26); }
+                                        if(map27.equals("flage")){ rUserInfo.setString("MAP27",""); }else{ rUserInfo.setString("MAP27",map27); }
+                                        if(map28.equals("flage")){ rUserInfo.setString("MAP28",""); }else{ rUserInfo.setString("MAP28",map28); }
+                                        if(map29.equals("flage")){ rUserInfo.setString("MAP29",""); }else{ rUserInfo.setString("MAP29",map29); }
+                                        if(map30.equals("flage")){ rUserInfo.setString("MAP30",""); }else{ rUserInfo.setString("MAP30",map30); }
+                                        if(map31.equals("flage")){ rUserInfo.setString("MAP31",""); }else{ rUserInfo.setString("MAP31",map31); }
+                                        if(map32.equals("flage")){ rUserInfo.setString("MAP32",""); }else{ rUserInfo.setString("MAP32",map32); }
+                                        if(map33.equals("flage")){ rUserInfo.setString("MAP33",""); }else{ rUserInfo.setString("MAP33",map33); }
+                                        if(map34.equals("flage")){ rUserInfo.setString("MAP34",""); }else{ rUserInfo.setString("MAP34",map34); }
+                                        if(map35.equals("flage")){ rUserInfo.setString("MAP35",""); }else{ rUserInfo.setString("MAP35",map35); }
+                                        if(map36.equals("flage")){ rUserInfo.setString("MAP36",""); }else{ rUserInfo.setString("MAP36",map36); }
+                                        if(map37.equals("flage")){ rUserInfo.setString("MAP37",""); }else{ rUserInfo.setString("MAP37",map37); }
+                                        if(map38.equals("flage")){ rUserInfo.setString("MAP38",""); }else{ rUserInfo.setString("MAP38",map38); }
+                                        if(map39.equals("flage")){ rUserInfo.setString("MAP39",""); }else{ rUserInfo.setString("MAP39",map39); }
+                                        if(map40.equals("flage")){ rUserInfo.setString("MAP40",""); }else{ rUserInfo.setString("MAP40",map40); }
+                                        if(map41.equals("flage")){ rUserInfo.setString("MAP41",""); }else{ rUserInfo.setString("MAP41",map41); }
+                                        if(map42.equals("flage")){ rUserInfo.setString("MAP42",""); }else{ rUserInfo.setString("MAP42",map42); }
+                                        if(map43.equals("flage")){ rUserInfo.setString("MAP43",""); }else{ rUserInfo.setString("MAP43",map43); }
+                                        if(map44.equals("flage")){ rUserInfo.setString("MAP44",""); }else{ rUserInfo.setString("MAP44",map44); }
+                                        if(map45.equals("flage")){ rUserInfo.setString("MAP45",""); }else{ rUserInfo.setString("MAP45",map45); }
+                                        if(map46.equals("flage")){ rUserInfo.setString("MAP46",""); }else{ rUserInfo.setString("MAP46",map46); }
+                                        if(map47.equals("flage")){ rUserInfo.setString("MAP47",""); }else{ rUserInfo.setString("MAP47",map47); }
+                                        if(map48.equals("flage")){ rUserInfo.setString("MAP48",""); }else{ rUserInfo.setString("MAP48",map48); }
+                                        if(map49.equals("flage")){ rUserInfo.setString("MAP49",""); }else{ rUserInfo.setString("MAP49",map49); }
+                                        if(map50.equals("flage")){ rUserInfo.setString("MAP50",""); }else{ rUserInfo.setString("MAP50",map50); }
 
                                         rUserList.addDataUnitInfo(rUserInfo);
                                 }

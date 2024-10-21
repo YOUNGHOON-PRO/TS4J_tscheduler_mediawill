@@ -43,7 +43,7 @@ public class EmailGenerator {
     Config cfg = Config.getInstance();
     cfg.loadConfig(Config.MAIN_CFG);
     String receiveDefineHost = cfg.getReceiveDefineHost();  //http://103.9.32.183:20000/TS/Receiver/ReceiverCheck.jsp
-    String mergeList = cfg.getMergyList();	//RID``RNAME``RMAIL``HRNAME``ENCKEY``MAP1``MAP2``MAP3``MAP4``MAP5``MAP6``MAP7``MAP8``MAP9``MAP10``MAP11``MAP12``MAP13``MAP14``MAP15``MAP16``MAP17``MAP18``MAP19``MAP20``MAP21``MAP22``MAP23``MAP24``MAP25``MAP26``MAP27``MAP28``MAP29``MAP30``BIZKEY``
+    String mergeList = cfg.getMergyList();	//RID``RNAME``RMAIL``HRNAME``ENCKEY``MAP1``MAP2``MAP3``MAP4``MAP5``MAP6``MAP7``MAP8``MAP9``MAP10``MAP11``MAP12``MAP13``MAP14``MAP15``MAP16``MAP17``MAP18``MAP19``MAP20``MAP21``MAP22``MAP23``MAP24``MAP25``MAP26``MAP27``MAP28``MAP29``MAP30``MAP31``MAP32``MAP33``MAP34``MAP35``MAP36``MAP37``MAP38``MAP39``MAP40``MAP41``MAP42``MAP43``MAP44``MAP45``MAP46``MAP47``MAP48``MAP49``MAP50``BIZKEY``
     boolean bMergeContents = false;
     int legacyRSListSize = cfg.getLegacyRSListSize();	//1000
     StringBuffer sb = null;
@@ -111,6 +111,26 @@ public class EmailGenerator {
     String	map28 = reserveInfo.getString("MAP28");
     String	map29 = reserveInfo.getString("MAP29");
     String	map30 = reserveInfo.getString("MAP30");
+    String	map31 = reserveInfo.getString("MAP31");
+    String	map32 = reserveInfo.getString("MAP32");
+    String	map33 = reserveInfo.getString("MAP33");
+    String	map34 = reserveInfo.getString("MAP34");
+    String	map35 = reserveInfo.getString("MAP35");
+    String	map36 = reserveInfo.getString("MAP36");
+    String	map37 = reserveInfo.getString("MAP37");
+    String	map38 = reserveInfo.getString("MAP38");
+    String	map39 = reserveInfo.getString("MAP39");
+    String	map40 = reserveInfo.getString("MAP40");
+    String	map41 = reserveInfo.getString("MAP41");
+    String	map42 = reserveInfo.getString("MAP42");
+    String	map43 = reserveInfo.getString("MAP43");
+    String	map44 = reserveInfo.getString("MAP44");
+    String	map45 = reserveInfo.getString("MAP45");
+    String	map46 = reserveInfo.getString("MAP46");
+    String	map47 = reserveInfo.getString("MAP47");
+    String	map48 = reserveInfo.getString("MAP48");
+    String	map49 = reserveInfo.getString("MAP49");
+    String	map50 = reserveInfo.getString("MAP50");
     
     String	bizkey = reserveInfo.getString("BIZKEY");
     
@@ -241,7 +261,26 @@ public class EmailGenerator {
           errorLogInfo.put("MAP28", map28);
           errorLogInfo.put("MAP29", map29);
           errorLogInfo.put("MAP30", map30);
-          
+          errorLogInfo.put("MAP31", map31);
+          errorLogInfo.put("MAP32", map32);
+          errorLogInfo.put("MAP33", map33);
+          errorLogInfo.put("MAP34", map34);
+          errorLogInfo.put("MAP35", map35);
+          errorLogInfo.put("MAP36", map36);
+          errorLogInfo.put("MAP37", map37);
+          errorLogInfo.put("MAP38", map38);
+          errorLogInfo.put("MAP39", map39);
+          errorLogInfo.put("MAP40", map40);
+          errorLogInfo.put("MAP41", map41);
+          errorLogInfo.put("MAP42", map42);
+          errorLogInfo.put("MAP43", map43);
+          errorLogInfo.put("MAP44", map44);
+          errorLogInfo.put("MAP45", map45);
+          errorLogInfo.put("MAP46", map46);
+          errorLogInfo.put("MAP47", map47);
+          errorLogInfo.put("MAP48", map48);
+          errorLogInfo.put("MAP49", map49);
+          errorLogInfo.put("MAP50", map50);
           errorLogInfo.put("BIZKEY", bizkey);
     	  
     	  ErrorLogGenerator.setErrorLogFormat("EmailGenerator",
@@ -283,7 +322,26 @@ public class EmailGenerator {
           errorLogInfo.put("MAP28", map28);
           errorLogInfo.put("MAP29", map29);
           errorLogInfo.put("MAP30", map30);
-          
+          errorLogInfo.put("MAP31", map31);
+          errorLogInfo.put("MAP32", map32);
+          errorLogInfo.put("MAP33", map33);
+          errorLogInfo.put("MAP34", map34);
+          errorLogInfo.put("MAP35", map35);
+          errorLogInfo.put("MAP36", map36);
+          errorLogInfo.put("MAP37", map37);
+          errorLogInfo.put("MAP38", map38);
+          errorLogInfo.put("MAP39", map39);
+          errorLogInfo.put("MAP40", map40);
+          errorLogInfo.put("MAP41", map41);
+          errorLogInfo.put("MAP42", map42);
+          errorLogInfo.put("MAP43", map43);
+          errorLogInfo.put("MAP44", map44);
+          errorLogInfo.put("MAP45", map45);
+          errorLogInfo.put("MAP46", map46);
+          errorLogInfo.put("MAP47", map47);
+          errorLogInfo.put("MAP48", map48);
+          errorLogInfo.put("MAP49", map49);
+          errorLogInfo.put("MAP50", map50);
           errorLogInfo.put("BIZKEY", bizkey);
 
           ErrorLogGenerator.setErrorLogFormat("EmailGenerator",
@@ -352,7 +410,26 @@ public class EmailGenerator {
       String[] rMAP28 = rUserList.getStringArray("MAP28");
       String[] rMAP29 = rUserList.getStringArray("MAP29");
       String[] rMAP30 = rUserList.getStringArray("MAP30");
-      
+      String[] rMAP31 = rUserList.getStringArray("MAP31");
+      String[] rMAP32 = rUserList.getStringArray("MAP32");
+      String[] rMAP33 = rUserList.getStringArray("MAP33");
+      String[] rMAP34 = rUserList.getStringArray("MAP34");
+      String[] rMAP35 = rUserList.getStringArray("MAP35");
+      String[] rMAP36 = rUserList.getStringArray("MAP36");
+      String[] rMAP37 = rUserList.getStringArray("MAP37");
+      String[] rMAP38 = rUserList.getStringArray("MAP38");
+      String[] rMAP39 = rUserList.getStringArray("MAP39");
+      String[] rMAP40 = rUserList.getStringArray("MAP40");
+      String[] rMAP41 = rUserList.getStringArray("MAP41");
+      String[] rMAP42 = rUserList.getStringArray("MAP42");
+      String[] rMAP43 = rUserList.getStringArray("MAP43");
+      String[] rMAP44 = rUserList.getStringArray("MAP44");
+      String[] rMAP45 = rUserList.getStringArray("MAP45");
+      String[] rMAP46 = rUserList.getStringArray("MAP46");
+      String[] rMAP47 = rUserList.getStringArray("MAP47");
+      String[] rMAP48 = rUserList.getStringArray("MAP48");
+      String[] rMAP49 = rUserList.getStringArray("MAP49");
+      String[] rMAP50 = rUserList.getStringArray("MAP50");
       String[] rBIZKEY = rUserList.getStringArray("BIZKEY");
       
       //수신자의 수를 센다.
@@ -744,7 +821,26 @@ public class EmailGenerator {
     String	map28 = reserveInfo.getString("MAP28");
     String	map29 = reserveInfo.getString("MAP29");
     String	map30 = reserveInfo.getString("MAP30");
-    
+    String	map31 = reserveInfo.getString("MAP31");
+    String	map32 = reserveInfo.getString("MAP32");
+    String	map33 = reserveInfo.getString("MAP33");
+    String	map34 = reserveInfo.getString("MAP34");
+    String	map35 = reserveInfo.getString("MAP35");
+    String	map36 = reserveInfo.getString("MAP36");
+    String	map37 = reserveInfo.getString("MAP37");
+    String	map38 = reserveInfo.getString("MAP38");
+    String	map39 = reserveInfo.getString("MAP39");
+    String	map40 = reserveInfo.getString("MAP40");
+    String	map41 = reserveInfo.getString("MAP41");
+    String	map42 = reserveInfo.getString("MAP42");
+    String	map43 = reserveInfo.getString("MAP43");
+    String	map44 = reserveInfo.getString("MAP44");
+    String	map45 = reserveInfo.getString("MAP45");
+    String	map46 = reserveInfo.getString("MAP46");
+    String	map47 = reserveInfo.getString("MAP47");
+    String	map48 = reserveInfo.getString("MAP48");
+    String	map49 = reserveInfo.getString("MAP49");
+    String	map50 = reserveInfo.getString("MAP50");
     String	bizkey = reserveInfo.getString("BIZKEY");
     
     String	secu_att_yn = reserveInfo.getString("SECU_ATT_YN");
@@ -870,7 +966,26 @@ public class EmailGenerator {
       String[] rMAP28 = rUserList.getStringArray("MAP28");
       String[] rMAP29 = rUserList.getStringArray("MAP29");
       String[] rMAP30 = rUserList.getStringArray("MAP30");
-      
+      String[] rMAP31 = rUserList.getStringArray("MAP31");
+      String[] rMAP32 = rUserList.getStringArray("MAP32");
+      String[] rMAP33 = rUserList.getStringArray("MAP33");
+      String[] rMAP34 = rUserList.getStringArray("MAP34");
+      String[] rMAP35 = rUserList.getStringArray("MAP35");
+      String[] rMAP36 = rUserList.getStringArray("MAP36");
+      String[] rMAP37 = rUserList.getStringArray("MAP37");
+      String[] rMAP38 = rUserList.getStringArray("MAP38");
+      String[] rMAP39 = rUserList.getStringArray("MAP39");
+      String[] rMAP40 = rUserList.getStringArray("MAP40");
+      String[] rMAP41 = rUserList.getStringArray("MAP41");
+      String[] rMAP42 = rUserList.getStringArray("MAP42");
+      String[] rMAP43 = rUserList.getStringArray("MAP43");
+      String[] rMAP44 = rUserList.getStringArray("MAP44");
+      String[] rMAP45 = rUserList.getStringArray("MAP45");
+      String[] rMAP46 = rUserList.getStringArray("MAP46");
+      String[] rMAP47 = rUserList.getStringArray("MAP47");
+      String[] rMAP48 = rUserList.getStringArray("MAP48");
+      String[] rMAP49 = rUserList.getStringArray("MAP49");
+      String[] rMAP50 = rUserList.getStringArray("MAP50");
       String[] rBIZKEY = rUserList.getStringArray("BIZKEY");
       
       //수신자의 수를 센다.

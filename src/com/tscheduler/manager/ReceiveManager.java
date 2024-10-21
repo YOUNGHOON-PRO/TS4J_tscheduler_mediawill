@@ -39,7 +39,7 @@ public class ReceiveManager {
   private DataUnitInfo reserveInfo;
 
   /**발송그룹저장테이블에서 MID에 해당하는 값을 가져오는 쿼리*/
-  public static final String RUSER_INFO_QUERY = "SELECT MID, SUBID, RID, RNAME, RMAIL, ENCKEY, MAP1, MAP2, MAP3, MAP4, MAP5, MAP6, MAP7, MAP8, MAP9, MAP10, MAP11, MAP12, MAP13, MAP14, MAP15, MAP16, MAP17, MAP18, MAP19, MAP20, MAP21, MAP22, MAP23, MAP24, MAP25, MAP26, MAP27, MAP28, MAP29, MAP30 FROM TS_RECIPIENTINFO WHERE MID = ? AND SUBID = ?";
+  public static final String RUSER_INFO_QUERY = "SELECT MID, SUBID, RID, RNAME, RMAIL, ENCKEY, MAP1, MAP2, MAP3, MAP4, MAP5, MAP6, MAP7, MAP8, MAP9, MAP10, MAP11, MAP12, MAP13, MAP14, MAP15, MAP16, MAP17, MAP18, MAP19, MAP20, MAP21, MAP22, MAP23, MAP24, MAP25, MAP26, MAP27, MAP28, MAP29, MAP30, MAP31, MAP32, MAP33, MAP34, MAP35, MAP36, MAP37, MAP38, MAP39, MAP40, MAP41, MAP42, MAP43, MAP44, MAP45, MAP46, MAP47, MAP48, MAP49, MAP50 FROM TS_RECIPIENTINFO WHERE MID = ? AND SUBID = ?";
 
   /**LegacyDB의 정보를 가져오는 쿼리*/
   public static final String LEGACY_INFO_QUERY =
@@ -275,7 +275,27 @@ public class ReceiveManager {
       String map28;
       String map29;
       String map30;
-      
+      String map31;
+      String map32;
+      String map33;
+      String map34;
+      String map35;
+      String map36;
+      String map37;
+      String map38;
+      String map39;
+      String map40;
+      String map41;
+      String map42;
+      String map43;
+      String map44;
+      String map45;
+      String map46;
+      String map47;
+      String map48;
+      String map49;
+      String map50;
+
       Hashtable errorLogInfo = null;
 
       StringBuffer sb = new StringBuffer();
@@ -323,6 +343,26 @@ public class ReceiveManager {
         map28 = rs.getString("MAP28");
         map29 = rs.getString("MAP29");
         map30 = rs.getString("MAP30");
+        map31 = rs.getString("MAP31");
+        map32 = rs.getString("MAP32");
+        map33 = rs.getString("MAP33");
+        map34 = rs.getString("MAP34");
+        map35 = rs.getString("MAP35");
+        map36 = rs.getString("MAP36");
+        map37 = rs.getString("MAP37");
+        map38 = rs.getString("MAP38");
+        map39 = rs.getString("MAP39");
+        map40 = rs.getString("MAP40");
+        map41 = rs.getString("MAP41");
+        map42 = rs.getString("MAP42");
+        map43 = rs.getString("MAP43");
+        map44 = rs.getString("MAP44");
+        map45 = rs.getString("MAP45");
+        map46 = rs.getString("MAP46");
+        map47 = rs.getString("MAP47");
+        map48 = rs.getString("MAP48");
+        map49 = rs.getString("MAP49");
+        map50 = rs.getString("MAP50");
 
         //복호화
         if("Y".equals(cfg.getEnc_yn())) {
@@ -339,101 +379,57 @@ public class ReceiveManager {
           rName = "";
         }
 
-        
-        if (map1 == null || map1.equals("")) {
-        	map1 = "flage";
-          }
-        if (enckey == null || enckey.equals("")) {
-        	enckey = "flage";
-          }
-        if (map2 == null || map2.equals("")) {
-        	map2 = "flage";
-          }
-        if (map3 == null || map3.equals("")) {
-        	map3 = "flage";
-          }
-        if (map4 == null || map4.equals("")) {
-        	map4 = "flage";
-        }
-        if (map5 == null || map5.equals("")) {
-        	map5 = "flage";
-        } 
-        if (map6 == null || map6.equals("")) {
-        	map6 = "flage";
-        } 
-        if (map7 == null || map7.equals("")) {
-        	map7 = "flage";
-        } 
-        if (map8 == null || map8.equals("")) {
-        	map8 = "flage";
-        } 
-        if (map9 == null || map9.equals("")) {
-        	map9 = "flage";
-        } 
-        if (map10 == null || map10.equals("")) {
-        	map10 = "flage";
-        } 
-        if (map11 == null || map11.equals("")) {
-        	map11 = "flage";
-        } 
-        if (map12 == null || map12.equals("")) {
-        	map12 = "flage";
-        } 
-        if (map13 == null || map13.equals("")) {
-        	map13 = "flage";
-        } 
-        if (map14 == null || map14.equals("")) {
-        	map14 = "flage";
-        } 
-        if (map15 == null || map15.equals("")) {
-        	map15 = "flage";
-        } 
-        if (map16 == null || map16.equals("")) {
-        	map16 = "flage";
-        } 
-        if (map17 == null || map17.equals("")) {
-        	map17 = "flage";
-        } 
-        if (map18 == null || map18.equals("")) {
-        	map18 = "flage";
-        } 
-        if (map19 == null || map19.equals("")) {
-        	map19 = "flage";
-        } 
-        if (map20 == null || map20.equals("")) {
-        	map20 = "flage";
-        } 
-        if (map21 == null || map21.equals("")) {
-        	map21 = "flage";
-        } 
-        if (map22 == null || map22.equals("")) {
-        	map22 = "flage";
-        } 
-        if (map23 == null || map23.equals("")) {
-        	map23 = "flage";
-        } 
-        if (map24 == null || map24.equals("")) {
-        	map24 = "flage";
-        } 
-        if (map25 == null || map25.equals("")) {
-        	map25 = "flage";
-        } 
-        if (map26 == null || map26.equals("")) {
-        	map26 = "flage";
-        } 
-        if (map27 == null || map27.equals("")) {
-        	map27 = "flage";
-        } 
-        if (map28 == null || map28.equals("")) {
-        	map28 = "flage";
-        } 
-        if (map29 == null || map29.equals("")) {
-        	map29 = "flage";
-        } 
-        if (map30 == null || map30.equals("")) {
-        	map30 = "flage";
-        } 
-        
+        if (enckey == null || enckey.equals("")) { enckey = "flage"; }
+        if (map1 == null || map1.equals("")) { map1 = "flage"; }
+		if (map2 == null || map2.equals("")) { map2 = "flage"; }
+		if (map3 == null || map3.equals("")) { map3 = "flage"; }
+		if (map4 == null || map4.equals("")) { map4 = "flage"; }
+		if (map5 == null || map5.equals("")) { map5 = "flage"; }
+		if (map6 == null || map6.equals("")) { map6 = "flage"; }
+		if (map7 == null || map7.equals("")) { map7 = "flage"; }
+		if (map8 == null || map8.equals("")) { map8 = "flage"; }
+		if (map9 == null || map9.equals("")) { map9 = "flage"; }
+		if (map10 == null || map10.equals("")) { map10 = "flage"; }
+		if (map11 == null || map11.equals("")) { map11 = "flage"; }
+		if (map12 == null || map12.equals("")) { map12 = "flage"; }
+		if (map13 == null || map13.equals("")) { map13 = "flage"; }
+		if (map14 == null || map14.equals("")) { map14 = "flage"; }
+		if (map15 == null || map15.equals("")) { map15 = "flage"; }
+		if (map16 == null || map16.equals("")) { map16 = "flage"; }
+		if (map17 == null || map17.equals("")) { map17 = "flage"; }
+		if (map18 == null || map18.equals("")) { map18 = "flage"; }
+		if (map19 == null || map19.equals("")) { map19 = "flage"; }
+		if (map20 == null || map20.equals("")) { map20 = "flage"; }
+		if (map21 == null || map21.equals("")) { map21 = "flage"; }
+		if (map22 == null || map22.equals("")) { map22 = "flage"; }
+		if (map23 == null || map23.equals("")) { map23 = "flage"; }
+		if (map24 == null || map24.equals("")) { map24 = "flage"; }
+		if (map25 == null || map25.equals("")) { map25 = "flage"; }
+		if (map26 == null || map26.equals("")) { map26 = "flage"; }
+		if (map27 == null || map27.equals("")) { map27 = "flage"; }
+		if (map28 == null || map28.equals("")) { map28 = "flage"; }
+		if (map29 == null || map29.equals("")) { map29 = "flage"; }
+		if (map30 == null || map30.equals("")) { map30 = "flage"; }
+		if (map31 == null || map31.equals("")) { map31 = "flage"; }
+		if (map32 == null || map32.equals("")) { map32 = "flage"; }
+		if (map33 == null || map33.equals("")) { map33 = "flage"; }
+		if (map34 == null || map34.equals("")) { map34 = "flage"; }
+		if (map35 == null || map35.equals("")) { map35 = "flage"; }
+		if (map36 == null || map36.equals("")) { map36 = "flage"; }
+		if (map37 == null || map37.equals("")) { map37 = "flage"; }
+		if (map38 == null || map38.equals("")) { map38 = "flage"; }
+		if (map39 == null || map39.equals("")) { map39 = "flage"; }
+		if (map40 == null || map40.equals("")) { map40 = "flage"; }
+		if (map41 == null || map41.equals("")) { map41 = "flage"; }
+		if (map42 == null || map42.equals("")) { map42 = "flage"; }
+		if (map43 == null || map43.equals("")) { map43 = "flage"; }
+		if (map44 == null || map44.equals("")) { map44 = "flage"; }
+		if (map45 == null || map45.equals("")) { map45 = "flage"; }
+		if (map46 == null || map46.equals("")) { map46 = "flage"; }
+		if (map47 == null || map47.equals("")) { map47 = "flage"; }
+		if (map48 == null || map48.equals("")) { map48 = "flage"; }
+		if (map49 == null || map49.equals("")) { map49 = "flage"; }
+		if (map50 == null || map50.equals("")) { map50 = "flage"; }
         
         //if(CheckFormat.checkEmail(rMail)			//2003.10.22 영맨고침
         //기존에 이메일만 체크하던것에서 ... rID와 rName도 체크한다.
@@ -472,7 +468,29 @@ public class ReceiveManager {
 						 .append(map27).append(Config.DELIMITER)
 						 .append(map28).append(Config.DELIMITER)
 						 .append(map29).append(Config.DELIMITER)
-						 .append(map30).append(Config.NEW_LINE)).toString();
+						 .append(map30).append(Config.DELIMITER)
+						 .append(map31).append(Config.DELIMITER)
+						 .append(map32).append(Config.DELIMITER)
+						 .append(map33).append(Config.DELIMITER)
+						 .append(map34).append(Config.DELIMITER)
+						 .append(map35).append(Config.DELIMITER)
+						 .append(map36).append(Config.DELIMITER)
+						 .append(map37).append(Config.DELIMITER)
+						 .append(map38).append(Config.DELIMITER)
+						 .append(map39).append(Config.DELIMITER)
+						 .append(map40).append(Config.DELIMITER)
+						 .append(map41).append(Config.DELIMITER)
+						 .append(map42).append(Config.DELIMITER)
+						 .append(map43).append(Config.DELIMITER)
+						 .append(map44).append(Config.DELIMITER)
+						 .append(map45).append(Config.DELIMITER)
+						 .append(map46).append(Config.DELIMITER)
+						 .append(map47).append(Config.DELIMITER)
+						 .append(map48).append(Config.DELIMITER)
+						 .append(map49).append(Config.DELIMITER)
+						 .append(map50).append(Config.DELIMITER)
+          				 .append(Config.NEW_LINE)).toString();
+
           
           //receiverStr = receiverStr.replaceAll("\r\n", "<br>");
           receiverStr = receiverStr.replaceAll("\r\n|\r|\n", "<br>");
@@ -538,7 +556,26 @@ public class ReceiveManager {
           errorLogInfo.put("MAP28", map28);
           errorLogInfo.put("MAP29", map29);
           errorLogInfo.put("MAP30", map30);
-          
+          errorLogInfo.put("MAP31", map31);
+          errorLogInfo.put("MAP32", map32);
+          errorLogInfo.put("MAP33", map33);
+          errorLogInfo.put("MAP34", map34);
+          errorLogInfo.put("MAP35", map35);
+          errorLogInfo.put("MAP36", map36);
+          errorLogInfo.put("MAP37", map37);
+          errorLogInfo.put("MAP38", map38);
+          errorLogInfo.put("MAP39", map39);
+          errorLogInfo.put("MAP40", map40);
+          errorLogInfo.put("MAP41", map41);
+          errorLogInfo.put("MAP42", map42);
+          errorLogInfo.put("MAP43", map43);
+          errorLogInfo.put("MAP44", map44);
+          errorLogInfo.put("MAP45", map45);
+          errorLogInfo.put("MAP46", map46);
+          errorLogInfo.put("MAP47", map47);
+          errorLogInfo.put("MAP48", map48);
+          errorLogInfo.put("MAP49", map49);
+          errorLogInfo.put("MAP50", map50);
 
           // 이메일의 문법이 틀릴때에는 실패에 대한 상태를 넣어준다.
           reserveInfo.setString("STATUS", ReserveStatusCode.R_EMAIL_ERROR);
@@ -766,6 +803,26 @@ public class ReceiveManager {
       String map28;
       String map29;
       String map30;
+      String map31;
+      String map32;
+      String map33;
+      String map34;
+      String map35;
+      String map36;
+      String map37;
+      String map38;
+      String map39;
+      String map40;
+      String map41;
+      String map42;
+      String map43;
+      String map44;
+      String map45;
+      String map46;
+      String map47;
+      String map48;
+      String map49;
+      String map50;
 
       StringBuffer sb = new StringBuffer();
       String receiverStr = "";
@@ -822,7 +879,27 @@ public class ReceiveManager {
         map28 = (map.get("MAP28")!=null) ? map28 = rs.getString("MAP28") : null;
         map29 = (map.get("MAP29")!=null) ? map29 = rs.getString("MAP29") : null;
         map30 = (map.get("MAP30")!=null) ? map30 = rs.getString("MAP30") : null;
-        
+        map31 = (map.get("MAP31")!=null) ? map31 = rs.getString("MAP31") : null;
+        map32 = (map.get("MAP32")!=null) ? map32 = rs.getString("MAP32") : null;
+        map33 = (map.get("MAP33")!=null) ? map33 = rs.getString("MAP33") : null;
+        map34 = (map.get("MAP34")!=null) ? map34 = rs.getString("MAP34") : null;
+        map35 = (map.get("MAP35")!=null) ? map35 = rs.getString("MAP35") : null;
+        map36 = (map.get("MAP36")!=null) ? map36 = rs.getString("MAP36") : null;
+        map37 = (map.get("MAP37")!=null) ? map37 = rs.getString("MAP37") : null;
+        map38 = (map.get("MAP38")!=null) ? map38 = rs.getString("MAP38") : null;
+        map39 = (map.get("MAP39")!=null) ? map39 = rs.getString("MAP39") : null;
+        map40 = (map.get("MAP40")!=null) ? map40 = rs.getString("MAP40") : null;
+        map41 = (map.get("MAP41")!=null) ? map41 = rs.getString("MAP41") : null;
+        map42 = (map.get("MAP42")!=null) ? map42 = rs.getString("MAP42") : null;
+        map43 = (map.get("MAP43")!=null) ? map43 = rs.getString("MAP43") : null;
+        map44 = (map.get("MAP44")!=null) ? map44 = rs.getString("MAP44") : null;
+        map45 = (map.get("MAP45")!=null) ? map45 = rs.getString("MAP45") : null;
+        map46 = (map.get("MAP46")!=null) ? map46 = rs.getString("MAP46") : null;
+        map47 = (map.get("MAP47")!=null) ? map47 = rs.getString("MAP47") : null;
+        map48 = (map.get("MAP48")!=null) ? map48 = rs.getString("MAP48") : null;
+        map49 = (map.get("MAP49")!=null) ? map49 = rs.getString("MAP49") : null;
+        map50 = (map.get("MAP50")!=null) ? map50 = rs.getString("MAP50") : null;
+
         //복호화
         if("Y".equals(cfg.getEnc_yn())) {
         	//rMail = safeDbEnc.getDecrypt(rMail, "NOT_RNNO");
@@ -830,105 +907,59 @@ public class ReceiveManager {
     		}	
         
         //Null을 막아준다.
-        if (rID == null) {
-          rID = "flage";
-        }
-        if (rName == null) {
-          rName = "flage";
-        }
-        if (enckey == null) {
-        	enckey = "flage";
-          }
-        if (map1 == null) {
-        	map1 = "flage";
-          }
-        if (map2 == null) {
-        	map2 = "flage";
-          }
-        if (map3 == null) {
-        	map3 = "flage";
-          }
-        if (map4 == null) {
-        	map4 = "flage";
-        }
-        if (map5 == null) {
-        	map5 = "flage";
-        }    
-        if (map6 == null) {
-        	map6 = "flage";
-        }    
-        if (map7 == null) {
-        	map8 = "flage";
-        }    
-        if (map8 == null) {
-        	map8 = "flage";
-        }    
-        if (map9 == null) {
-        	map9 = "flage";
-        }    
-        if (map10 == null) {
-        	map10 = "flage";
-        }    
-        if (map11 == null) {
-        	map11 = "flage";
-        }    
-        if (map12 == null) {
-        	map12 = "flage";
-        }    
-        if (map13 == null) {
-        	map13 = "flage";
-        }    
-        if (map14 == null) {
-        	map14 = "flage";
-        }    
-        if (map15 == null) {
-        	map15 = "flage";
-        }    
-        if (map16 == null) {
-        	map16 = "flage";
-        }    
-        if (map17 == null) {
-        	map17 = "flage";
-        }    
-        if (map18 == null) {
-        	map18 = "flage";
-        }    
-        if (map19 == null) {
-        	map19 = "flage";
-        }    
-        if (map20 == null) {
-        	map20 = "flage";
-        }    
-        if (map21 == null) {
-        	map21 = "flage";
-        }    
-        if (map22 == null) {
-        	map22 = "flage";
-        }    
-        if (map23 == null) {
-        	map23 = "flage";
-        }    
-        if (map24 == null) {
-        	map24 = "flage";
-        }    
-        if (map25 == null) {
-        	map25 = "flage";
-        }    
-        if (map26 == null) {
-        	map26 = "flage";
-        }    
-        if (map27 == null) {
-        	map27 = "flage";
-        }    
-        if (map28 == null) {
-        	map28 = "flage";
-        }    
-        if (map29 == null) {
-        	map29 = "flage";
-        }    
-        if (map30 == null) {
-        	map30 = "flage";
-        }    
+        if (rID == null) { rID = "flage"; }
+        if (rName == null) { rName = "flage"; }
+        if (enckey == null) { enckey = "flage"; }
+        if (map1 == null) { map1 = "flage"; }    
+        if (map2 == null) { map2 = "flage"; }    
+        if (map3 == null) { map3 = "flage"; }    
+        if (map4 == null) { map4 = "flage"; }    
+        if (map5 == null) { map5 = "flage"; }    
+        if (map6 == null) { map6 = "flage"; }    
+        if (map7 == null) { map7 = "flage"; }    
+        if (map8 == null) { map8 = "flage"; }    
+        if (map9 == null) { map9 = "flage"; }    
+        if (map10 == null) { map10 = "flage"; }    
+        if (map11 == null) { map11 = "flage"; }    
+        if (map12 == null) { map12 = "flage"; }    
+        if (map13 == null) { map13 = "flage"; }    
+        if (map14 == null) { map14 = "flage"; }    
+        if (map15 == null) { map15 = "flage"; }    
+        if (map16 == null) { map16 = "flage"; }    
+        if (map17 == null) { map17 = "flage"; }    
+        if (map18 == null) { map18 = "flage"; }    
+        if (map19 == null) { map19 = "flage"; }    
+        if (map20 == null) { map20 = "flage"; }    
+        if (map21 == null) { map21 = "flage"; }    
+        if (map22 == null) { map22 = "flage"; }    
+        if (map23 == null) { map23 = "flage"; }    
+        if (map24 == null) { map24 = "flage"; }    
+        if (map25 == null) { map25 = "flage"; }    
+        if (map26 == null) { map26 = "flage"; }    
+        if (map27 == null) { map27 = "flage"; }    
+        if (map28 == null) { map28 = "flage"; }    
+        if (map29 == null) { map29 = "flage"; }    
+        if (map30 == null) { map30 = "flage"; }    
+        if (map31 == null) { map31 = "flage"; }    
+        if (map32 == null) { map32 = "flage"; }    
+        if (map33 == null) { map33 = "flage"; }    
+        if (map34 == null) { map34 = "flage"; }    
+        if (map35 == null) { map35 = "flage"; }    
+        if (map36 == null) { map36 = "flage"; }    
+        if (map37 == null) { map37 = "flage"; }    
+        if (map38 == null) { map38 = "flage"; }    
+        if (map39 == null) { map39 = "flage"; }    
+        if (map40 == null) { map40 = "flage"; }    
+        if (map41 == null) { map41 = "flage"; }    
+        if (map42 == null) { map42 = "flage"; }    
+        if (map43 == null) { map43 = "flage"; }    
+        if (map44 == null) { map44 = "flage"; }    
+        if (map45 == null) { map45 = "flage"; }    
+        if (map46 == null) { map46 = "flage"; }    
+        if (map47 == null) { map47 = "flage"; }    
+        if (map48 == null) { map48 = "flage"; }    
+        if (map49 == null) { map49 = "flage"; }    
+        if (map50 == null) { map50 = "flage"; }    
         
           //if(CheckFormat.checkEmail(rMail))
         if (CheckFormat.checkEmail(rMail) && ! (rID.equals("")) &&
@@ -968,6 +999,26 @@ public class ReceiveManager {
                          .append(map28).append(Config.DELIMITER)
                          .append(map29).append(Config.DELIMITER)
                          .append(map30).append(Config.DELIMITER)
+                         .append(map31).append(Config.DELIMITER)
+                         .append(map32).append(Config.DELIMITER)
+                         .append(map33).append(Config.DELIMITER)
+                         .append(map34).append(Config.DELIMITER)
+                         .append(map35).append(Config.DELIMITER)
+                         .append(map36).append(Config.DELIMITER)
+                         .append(map37).append(Config.DELIMITER)
+                         .append(map38).append(Config.DELIMITER)
+                         .append(map39).append(Config.DELIMITER)
+                         .append(map40).append(Config.DELIMITER)
+                         .append(map41).append(Config.DELIMITER)
+                         .append(map42).append(Config.DELIMITER)
+                         .append(map43).append(Config.DELIMITER)
+                         .append(map44).append(Config.DELIMITER)
+                         .append(map45).append(Config.DELIMITER)
+                         .append(map46).append(Config.DELIMITER)
+                         .append(map47).append(Config.DELIMITER)
+                         .append(map48).append(Config.DELIMITER)
+                         .append(map49).append(Config.DELIMITER)
+                         .append(map50).append(Config.DELIMITER)
                          .append(Config.NEW_LINE)).toString();
           sb.append(receiverStr);
           receiverNumber++;
