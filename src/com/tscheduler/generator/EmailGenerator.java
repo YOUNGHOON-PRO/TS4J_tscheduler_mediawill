@@ -643,13 +643,18 @@ public class EmailGenerator {
 
 			// 메일 수신자의 도메인 추출
 			String toDomain = rMailList[i].split("@")[1].trim().toLowerCase();
+			// 메일 발신자의 도메인 추출
+			String fromDomain = sMail.split("@")[1].trim().toLowerCase();
+
 			LOGGER.info("DKIM 적용 대상 도메인 목록 {}, 수신자 도메인: {}", targetDomains, toDomain);
 
 			if (targetDomains.indexOf(toDomain) > -1) {
 //							LOGGER.debug("Normal MIME<<<{}>>>", email);
+				
 				String dkimMime = SimpleJavaDKIMSign.addDKIMSignature(
 						email, 
-						Config.getInstance().getDKIM_DOMAIN(),
+//						Config.getInstance().getDKIM_DOMAIN(),
+						fromDomain,
 						Config.getInstance().getDKIM_SELECTOR(),
 						Config.getInstance().getDKIM_PRIVATE_KEY()
 					);
