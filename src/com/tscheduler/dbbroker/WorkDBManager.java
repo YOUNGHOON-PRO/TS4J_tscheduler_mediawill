@@ -36,7 +36,7 @@ public class WorkDBManager
 
 	/**WorkDBManager의 Singleton 객체*/
 	private static WorkDBManager instance;
-
+	private static boolean instanceOk = false;
 	/**
 	 * 컨넥션을 얻는다.
 	 * @version 1.0
@@ -45,10 +45,14 @@ public class WorkDBManager
 	 */
 	public static Connection getConnection()
 	{
-		if( instance == null ) {
+		if( instance == null  || instanceOk == false) {
 			instance = new WorkDBManager();
 		}
 		else {
+		}
+		
+		if(instanceOk == false) {
+			return null;
 		}
 		return instance.getFreeConnection();
 	}
@@ -118,9 +122,11 @@ public class WorkDBManager
 				LOGGER.info("새로운컨넥션을만든다:_" + i + "_" + con);
 				watingPool.add(con);
 			}
+			this.instanceOk = true;
 		}
 		catch(Exception e)
 		{
+			this.instanceOk = false;
 			LOGGER.error(e);
 			//e.printStackTrace();
 		}
@@ -150,10 +156,10 @@ public class WorkDBManager
 			{
 				con = (Connection) watingPool.remove(0);
 
-				LOGGER.info("------------------------------------");
-				LOGGER.info("현재 사용중인 컨넥션수:"+usingPool.size());
-				LOGGER.info("현재 대기중인 컨넥션수:"+watingPool.size());
-				LOGGER.info("------------------------------------");
+//				LOGGER.info("------------------------------------");
+//				LOGGER.info("현재 사용중인 컨넥션수:"+usingPool.size());
+//				LOGGER.info("현재 대기중인 컨넥션수:"+watingPool.size());
+//				LOGGER.info("------------------------------------");
 				
 				usingPool.add(con);
 			}
@@ -202,23 +208,32 @@ public class WorkDBManager
 	 */
 	public synchronized void closeAllConn()
 	{
+		int watingPoolSize = watingPool.size();
+		int usingPoolSize = usingPool.size();
+		
+		LOGGER.info("##### in closeAllConn() | watingPool.size() : {}, usingPool.size() : {} #####", watingPoolSize, usingPoolSize);
 		try
 		{
-			for( int i = 0; i < watingPool.size(); i++ )
+			for( int i = 0; i < watingPoolSize; i++ )
 			{
 				Connection con = (Connection)watingPool.remove(0);
 				if( con != null ) {
 					con.close();
 				}
 			}
-
-			for( int i = 0; i < usingPool.size(); i++ )
+			LOGGER.info("##### in closeAllConn() | after watingPool.remove(), watingPool.size() : {} #####", watingPool.size());
+			
+			for( int i = 0; i < usingPoolSize; i++ )
 			{
 				Connection con = (Connection)usingPool.remove(0);
 				if( con != null ) {
 					con.close();
 				}
 			}
+			LOGGER.info("##### in closeAllConn() | after usingPool.remove(), usingPool.size() : {} #####", usingPool.size());
+			
+			instance = null;
+			instanceOk = false;
 		}
 		catch(Exception e) {
 			LOGGER.error(e);
@@ -233,6 +248,7 @@ public class WorkDBManager
 	 */
 	public void finalize()
 	{
+		LOGGER.info("##### finalize() 호출 #####");
 		closeAllConn();
 	}
 
@@ -244,24 +260,30 @@ public class WorkDBManager
 	 */
 	public static synchronized void refreshConn()
 	{
+		int watingPoolSize = watingPool.size();
+		int usingPoolSize = usingPool.size();
+
+		LOGGER.info("##### in refreshConns() | watingPool.size() : {}, usingPool.size() : {} #####", watingPoolSize, usingPoolSize);
 		//모든 컨넥션을 끊는다.
 		try
 		{
-			for( int i = 0; i < watingPool.size(); i++ )
+			for( int i = 0; i < watingPoolSize; i++ )
 			{
 				Connection con = (Connection)watingPool.remove(0);
 				if(con != null) {
 					con.close();
 				}
 			}
-
-			for( int i = 0; i < usingPool.size(); i++ )
+			LOGGER.info("##### in refreshConns() | after watingPool.remove(), watingPool.size() : {} #####", watingPool.size());
+			
+			for( int i = 0; i < usingPoolSize; i++ )
 			{
 				Connection con = (Connection)usingPool.remove(0);
 				if( con != null ) {
 					con.close();
 				}
 			}
+			LOGGER.info("##### in refreshConns() | after watingPool.remove(), usingPool.size() : {} #####", usingPool.size());
 		}
 		catch(Exception e) {
 			LOGGER.error(e);
@@ -270,6 +292,7 @@ public class WorkDBManager
 
 		//다시 커넥션을 맺어준다.
 		instance = null;
+		instanceOk = false;
 		instance = new WorkDBManager();
 	}
 }
